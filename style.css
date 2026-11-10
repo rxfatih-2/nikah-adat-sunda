@@ -1,0 +1,112 @@
+/* ============================================
+   CUSTOM STYLES — Undangan Deni & Novi
+   ============================================ */
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #FFF8F8; }
+::-webkit-scrollbar-thumb { background: #F0DDE1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #B85C6E; }
+
+/* Lock scroll saat cover tampil */
+.lock-scroll {
+    overflow: hidden !important;
+    height: 100vh !important;
+    position: fixed !important;
+    width: 100% !important;
+    touch-action: none !important;
+}
+
+/* Prevent horizontal overflow */
+html, body {
+    overflow-x: hidden;
+}
+
+/* ============================================
+   INTRO ANIMATIONS
+   ============================================ */
+
+@keyframes lineGrow {
+    from { transform: scaleY(0); }
+    to   { transform: scaleY(1); }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(110%); }
+    to   { transform: translateY(0); }
+}
+
+@keyframes coverExit {
+    to {
+        opacity: 0;
+        transform: scale(1.02);
+        filter: blur(4px);
+    }
+}
+
+.intro-line {
+    transform: scaleY(0);
+    transform-origin: top;
+    animation: lineGrow 0.8s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+.intro-line-bottom {
+    transform: scaleY(0);
+    transform-origin: bottom;
+    animation: lineGrow 0.8s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+.intro-fade {
+    opacity: 0;
+    animation: fadeUp 0.85s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+.intro-slide {
+    transform: translateY(110%);
+    animation: slideUp 1.15s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+.cover-exit {
+    animation: coverExit 0.9s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+    pointer-events: none;
+}
+
+/* ============================================
+   DECORATIVE
+   ============================================ */
+
+.texture {
+    background-image: radial-gradient(rgba(184, 92, 110, 0.05) 1px, transparent 1px);
+    background-size: 5px 5px;
+}
+
+/* ============================================
+   FORM FOCUS STATE
+   ============================================ */
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #B85C6E !important;
+}
+
+/* ============================================
+   REDUCED MOTION — aksesibilitas
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    .intro-line,
+    .intro-line-bottom,
+    .intro-fade,
+    .intro-slide,
+    .cover-exit {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
