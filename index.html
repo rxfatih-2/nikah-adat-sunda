@@ -3,32 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Pernikahan Deni & Novi</title>
+    <title>Deni & Novi — Undangan Pernikahan</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- WAJIB INLINE: tailwind.config harus diset setelah CDN load -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        cream: '#FFF8F8',
+                        cream: '#FCF8F4',
                         paper: '#FFFFFF',
-                        blush: '#FCE9EC',
-                        rose: '#B85C6E',
-                        'rose-deep': '#8A3E4D',
-                        ink: '#2B1F23',
-                        muted: '#8A7078',
-                        line: '#F0DDE1',
+                        blush: '#FCF3F2',
+                        'rose-soft': '#F5DCDC',
+                        rose: '#C8969A',
+                        'rose-deep': '#A67277',
+                        gold: '#C9A961',
+                        'gold-soft': '#E8D8B0',
+                        ink: '#3A2E2E',
+                        muted: '#8B7676',
+                        line: '#EEDDDD',
                     },
                     fontFamily: {
+                        display: ['Italiana', 'serif'],
+                        script: ['"Pinyon Script"', 'cursive'],
                         serif: ['"Cormorant Garamond"', 'serif'],
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        sans: ['Jost', 'sans-serif'],
                     }
                 }
             }
@@ -36,193 +39,276 @@
     </script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Path RELATIF: tanpa leading slash → GitHub Pages subpath aman -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="lock-scroll bg-cream text-ink font-sans antialiased selection:bg-rose selection:text-paper">
 
     <!-- ═══════════════════════════════════════════════════════
-         OPENING COVER — INTRO
+         OPENING COVER
          ═══════════════════════════════════════════════════════ -->
-    <div id="openingCover" class="fixed inset-0 z-[9999] bg-paper texture flex items-center justify-center px-6">
+    <div id="openingCover" class="fixed inset-0 z-[9999] bg-blush texture flex items-center justify-center px-6 overflow-hidden">
 
-        <div class="intro-line absolute top-0 w-px h-20 md:h-32 bg-line" style="left: calc(50% - 0.5px); animation-delay: 0.2s"></div>
-        <div class="intro-line-bottom absolute bottom-0 w-px h-20 md:h-32 bg-line" style="left: calc(50% - 0.5px); animation-delay: 0.2s"></div>
+        <!-- Botanical corners -->
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
 
-        <div class="w-full max-w-sm md:max-w-lg lg:max-w-2xl text-center space-y-6 md:space-y-8">
+        <!-- Soft radial glow behind -->
+        <div class="absolute w-[500px] h-[500px] rounded-full bg-rose-soft/40 blur-3xl pointer-events-none"></div>
 
-            <div class="overflow-hidden">
-                <p class="intro-fade text-[10px] md:text-[11px] uppercase tracking-[0.5em] text-muted" style="animation-delay: 0.55s">
-                    The Wedding Of
-                </p>
+        <div class="relative w-full max-w-sm md:max-w-xl text-center space-y-7 md:space-y-9">
+
+            <!-- Monogram -->
+            <div class="intro-fade" style="animation-delay: 0.3s">
+                <div class="monogram mx-auto">
+                    <div class="monogram-inner">
+                        <span class="font-script text-3xl md:text-4xl text-rose-deep">D & N</span>
+                    </div>
+                </div>
             </div>
 
-            <div class="overflow-hidden pb-2 md:pb-4">
-                <h1 class="intro-slide font-serif text-6xl md:text-8xl lg:text-9xl text-ink leading-[0.95]" style="animation-delay: 0.95s">
-                    Deni <span class="italic text-rose">&</span> Novi
+            <!-- Label -->
+            <div class="overflow-hidden">
+                <div class="intro-fade flex items-center justify-center gap-3" style="animation-delay: 0.55s">
+                    <span class="h-px w-10 bg-gold/50"></span>
+                    <span class="text-[10px] md:text-[11px] uppercase tracking-[0.5em] text-muted">The Wedding Of</span>
+                    <span class="h-px w-10 bg-gold/50"></span>
+                </div>
+            </div>
+
+            <!-- Names -->
+            <div class="overflow-hidden pb-3">
+                <h1 class="intro-slide font-script text-7xl md:text-8xl lg:text-9xl text-rose-deep leading-[1.1] drop-shadow-sm" style="animation-delay: 0.95s">
+                    Deni & Novi
                 </h1>
             </div>
 
+            <!-- Date -->
             <div class="overflow-hidden">
-                <div class="intro-fade flex items-center justify-center gap-3 md:gap-4" style="animation-delay: 1.45s">
-                    <span class="h-px w-8 md:w-14 bg-line"></span>
-                    <span class="text-[10px] md:text-xs tracking-[0.35em] text-muted">28 · 11 · 2026</span>
-                    <span class="h-px w-8 md:w-14 bg-line"></span>
+                <div class="intro-fade flex items-center justify-center gap-3" style="animation-delay: 1.4s">
+                    <span class="h-px w-10 bg-gold/50"></span>
+                    <span class="text-[10px] md:text-xs tracking-[0.4em] text-muted uppercase">28 . 11 . 2026</span>
+                    <span class="h-px w-10 bg-gold/50"></span>
                 </div>
             </div>
 
-            <div class="overflow-hidden pt-6 md:pt-10">
-                <div class="intro-fade" style="animation-delay: 1.8s">
-                    <p class="text-[9px] md:text-[10px] uppercase tracking-[0.35em] text-muted mb-2">Kepada</p>
-                    <p id="guestNameDisplay" class="font-serif text-xl md:text-2xl text-ink truncate px-4">Tamu Undangan</p>
+            <!-- Guest card -->
+            <div class="overflow-hidden pt-6 md:pt-8">
+                <div class="intro-fade" style="animation-delay: 1.75s">
+                    <div class="inline-block px-6 md:px-10 py-4 bg-white/80 backdrop-blur border border-gold/40 rounded-sm">
+                        <p class="text-[9px] md:text-[10px] uppercase tracking-[0.35em] text-muted mb-2">Kepada</p>
+                        <p id="guestNameDisplay" class="font-serif text-lg md:text-xl text-ink truncate max-w-[240px] md:max-w-none mx-auto">Tamu Undangan</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="overflow-hidden pt-4 md:pt-6">
-                <div class="intro-fade" style="animation-delay: 2.15s">
+            <!-- Button -->
+            <div class="overflow-hidden pt-4">
+                <div class="intro-fade" style="animation-delay: 2.1s">
                     <button onclick="openInvitation()"
-                            class="group inline-flex items-center gap-3 px-8 md:px-10 py-3.5 border border-rose/50 text-rose text-[10px] md:text-[11px] uppercase tracking-[0.3em] hover:bg-rose hover:text-paper transition-colors duration-500 cursor-pointer">
+                            class="group relative inline-flex items-center gap-3 px-10 md:px-12 py-3.5 bg-rose text-paper text-[10px] md:text-[11px] uppercase tracking-[0.35em] hover:bg-rose-deep transition-colors duration-500 cursor-pointer shadow-md hover:shadow-xl">
                         <span>Buka Undangan</span>
-                        <i class="fa-solid fa-arrow-right text-[9px] group-hover:translate-x-1 transition-transform duration-300"></i>
+                        <i class="fa-regular fa-envelope-open text-[11px] group-hover:scale-110 transition-transform"></i>
                     </button>
                 </div>
             </div>
 
+        </div>
+
+        <!-- Bottom hint -->
+        <div class="absolute bottom-6 left-0 right-0 text-center intro-fade" style="animation-delay: 2.4s">
+            <p class="text-[8px] md:text-[9px] uppercase tracking-[0.4em] text-muted/70">Scroll to open</p>
         </div>
     </div>
 
     <!-- ═══════════════════════════════════════════════════════
          MAIN CONTENT
          ═══════════════════════════════════════════════════════ -->
-    <div id="mainContent" class="w-full pb-24 md:pb-32">
+    <div id="mainContent" class="w-full pb-24 md:pb-0 overflow-x-hidden">
 
-        <!-- Audio toggle -->
+        <!-- Petals canvas (subtle) -->
+        <canvas id="petalCanvas" class="fixed inset-0 pointer-events-none z-[5]"></canvas>
+
+        <!-- Audio -->
         <div id="audioContainer" class="fixed bottom-24 md:bottom-8 right-4 md:right-6 z-40 hidden">
             <button id="audioToggleBtn" onclick="toggleAudio()"
-                    class="w-10 h-10 md:w-12 md:h-12 bg-paper border border-line text-rose rounded-full shadow-lg flex items-center justify-center transition-all active:scale-90 hover:bg-rose hover:text-paper"
-                    title="Putar / Hentikan Musik">
-                <i id="audioIcon" class="fa-solid fa-music text-xs md:text-sm"></i>
+                    class="w-11 h-11 bg-white/90 backdrop-blur border border-gold/50 text-rose rounded-full shadow-lg flex items-center justify-center transition-all active:scale-90 hover:bg-rose hover:text-paper">
+                <i id="audioIcon" class="fa-solid fa-music text-xs"></i>
             </button>
         </div>
 
-        <!-- Backsound -->
         <audio id="bgAudio" loop preload="auto" playsinline
                src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3"></audio>
 
-        <!-- ─────────────── HERO ─────────────── -->
-        <section id="hero" class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 py-24 bg-paper">
+        <!-- ═════ HERO ═════ -->
+        <section id="hero" class="relative h-screen min-h-[640px] md:min-h-[700px] overflow-hidden">
 
-            <p class="text-[10px] md:text-xs uppercase tracking-[0.5em] text-muted mb-8 md:mb-12">Pernikahan</p>
-
-            <h1 class="font-serif text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-ink leading-[0.9]">
-                Deni <span class="italic text-rose">&</span><br class="sm:hidden"> <span class="hidden sm:inline italic text-rose">&</span> Novi
-            </h1>
-
-            <div class="flex items-center justify-center gap-4 md:gap-6 mt-8 md:mt-12">
-                <span class="h-px w-10 md:w-16 bg-line"></span>
-                <p class="text-[10px] md:text-xs tracking-[0.35em] text-muted">28 · 11 · 2026</p>
-                <span class="h-px w-10 md:w-16 bg-line"></span>
+            <div class="hero-img absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=85"
+                     alt="Deni & Novi" class="w-full h-full object-cover">
             </div>
 
-            <div class="mt-16 md:mt-24 w-full max-w-xs md:max-w-md">
-                <p class="text-[9px] md:text-[10px] uppercase tracking-[0.35em] text-muted mb-5 md:mb-6">Menghitung Hari</p>
-                <div class="grid grid-cols-4 gap-2 md:gap-4 text-center">
-                    <div>
-                        <span id="cdDays" class="block font-serif text-3xl md:text-5xl text-ink leading-none">00</span>
-                        <span class="block text-[8px] md:text-[9px] uppercase tracking-[0.25em] text-muted mt-2 md:mt-3">Hari</span>
-                    </div>
-                    <div>
-                        <span id="cdHours" class="block font-serif text-3xl md:text-5xl text-ink leading-none">00</span>
-                        <span class="block text-[8px] md:text-[9px] uppercase tracking-[0.25em] text-muted mt-2 md:mt-3">Jam</span>
-                    </div>
-                    <div>
-                        <span id="cdMins" class="block font-serif text-3xl md:text-5xl text-ink leading-none">00</span>
-                        <span class="block text-[8px] md:text-[9px] uppercase tracking-[0.25em] text-muted mt-2 md:mt-3">Menit</span>
-                    </div>
-                    <div>
-                        <span id="cdSecs" class="block font-serif text-3xl md:text-5xl text-ink leading-none">00</span>
-                        <span class="block text-[8px] md:text-[9px] uppercase tracking-[0.25em] text-muted mt-2 md:mt-3">Detik</span>
-                    </div>
-                </div>
-            </div>
+            <div class="absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/25 to-ink/60"></div>
 
-            <a href="#ayat" class="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted hover:text-rose transition-colors">
-                <span class="text-[8px] md:text-[9px] uppercase tracking-[0.35em]">Gulir</span>
-                <i class="fa-solid fa-arrow-down text-[10px]"></i>
-            </a>
-        </section>
+            <div class="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 py-16">
 
-        <!-- ─────────────── VERSE ─────────────── -->
-        <section id="ayat" class="py-24 md:py-32 px-6 bg-cream">
-            <div class="max-w-md md:max-w-2xl mx-auto text-center space-y-6 md:space-y-8">
-
-                <p class="font-serif text-xl md:text-2xl lg:text-3xl leading-[2] text-ink" dir="rtl">
-                    وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً
-                </p>
-
-                <p class="text-[13px] md:text-[15px] text-muted leading-relaxed md:leading-loose">
-                    &ldquo;Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang.&rdquo;
-                </p>
-
-                <p class="text-[10px] md:text-[11px] uppercase tracking-[0.35em] text-rose">QS. Ar-Rum : 21</p>
-
-                <div class="pt-10 md:pt-14 mt-8 md:mt-10 border-t border-line max-w-md mx-auto">
-                    <p class="text-[13px] md:text-[15px] text-muted italic leading-relaxed font-serif">
-                        &ldquo;Sareundeuk saigel, sabobot sapihanean,<br class="hidden md:inline">ka cai jadi saleuwi, ka darat jadi salebak.&rdquo;
-                    </p>
-                    <p class="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-muted mt-4">
-                        Seia sekata, saling melengkapi
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ─────────────── COUPLE ─────────────── -->
-        <section id="mempelai" class="py-24 md:py-32 px-6 bg-paper">
-            <div class="max-w-md md:max-w-4xl lg:max-w-5xl mx-auto">
-
-                <div class="text-center mb-16 md:mb-20">
-                    <p class="text-[10px] md:text-[11px] uppercase tracking-[0.4em] text-muted">Mempelai</p>
-                    <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl text-ink mt-2 md:mt-3">Pasangan Pengantin</h2>
+                <div class="reveal">
+                    <p class="text-[10px] md:text-xs uppercase tracking-[0.5em] text-paper/80 mb-6">We're Getting Married</p>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-16 md:gap-12 lg:gap-20">
+                <div class="reveal" style="transition-delay: 0.15s">
+                    <h1 class="font-script text-7xl md:text-9xl text-paper leading-[1.1] drop-shadow-lg">
+                        Deni & Novi
+                    </h1>
+                </div>
 
-                    <div class="text-center space-y-5 md:space-y-6">
-                        <div class="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 mx-auto rounded-full overflow-hidden border border-line">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80" alt="Deni Ramdani" class="w-full h-full object-cover">
+                <div class="reveal mt-4" style="transition-delay: 0.3s">
+                    <div class="flex items-center justify-center gap-4">
+                        <span class="h-px w-12 bg-paper/60"></span>
+                        <p class="text-[10px] md:text-xs uppercase tracking-[0.4em] text-paper/90">28 . 11 . 2026</p>
+                        <span class="h-px w-12 bg-paper/60"></span>
+                    </div>
+                </div>
+
+                <!-- Countdown card -->
+                <div class="reveal mt-10 md:mt-14 w-full max-w-md" style="transition-delay: 0.45s">
+                    <div class="bg-white/95 backdrop-blur-md border border-gold/40 px-6 py-6 md:px-8 md:py-7 shadow-xl">
+                        <p class="text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-muted mb-4">Menghitung Hari</p>
+                        <div class="grid grid-cols-4 divide-x divide-line">
+                            <div>
+                                <span id="cdDays" class="block font-display text-3xl md:text-4xl text-rose-deep leading-none">00</span>
+                                <span class="block text-[8px] md:text-[9px] uppercase tracking-[0.25em] text-muted mt-2">Hari</span>
+                            </div>
+                            <div>
+                                <span id="cdHours" class="block font-display text-3xl md:text-4xl text-rose-deep leading-none">00</span>
+                                <span class="block text-[8px] md:text-[9px] uppercase tracking-[0.25em] text-muted mt-2">Jam</span>
+                            </div>
+                            <div>
+                                <span id="cdMins" class="block font-display text-3xl md:text-4xl text-rose-deep leading-none">00</span>
+                                <span class="block text-[8px] md:text-[9px] uppercase tracking-[0.25em] text-muted mt-2">Menit</span>
+                            </div>
+                            <div>
+                                <span id="cdSecs" class="block font-display text-3xl md:text-4xl text-rose-deep leading-none">00</span>
+                                <span class="block text-[8px] md:text-[9px] uppercase tracking-[0.25em] text-muted mt-2">Detik</span>
+                            </div>
                         </div>
-                        <div>
-                            <h3 class="font-serif text-2xl md:text-3xl text-ink">Deni Ramdani</h3>
-                            <p class="text-[9px] md:text-[10px] uppercase tracking-[0.35em] text-rose mt-2">Mempelai Pria</p>
-                            <p class="text-[12px] md:text-[13px] text-muted mt-5 md:mt-6 leading-relaxed">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Scroll hint -->
+            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-paper/70">
+                <span class="text-[8px] uppercase tracking-[0.4em]">Scroll</span>
+                <span class="scroll-line"></span>
+            </div>
+        </section>
+
+        <!-- ═════ VERSE ═════ -->
+        <section id="ayat" class="py-24 md:py-32 px-6 bg-blush relative">
+            <div class="max-w-xl md:max-w-2xl mx-auto text-center">
+
+                <div class="reveal">
+                    <div class="section-label">
+                        <span class="h-px w-12 bg-gold/50"></span>
+                        <span class="text-[9px] uppercase tracking-[0.45em] text-rose">Bismillah</span>
+                        <span class="h-px w-12 bg-gold/50"></span>
+                    </div>
+                </div>
+
+                <div class="reveal mt-8" style="transition-delay: 0.1s">
+                    <p class="font-serif text-xl md:text-2xl lg:text-3xl leading-[2] text-ink" dir="rtl">
+                        وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً
+                    </p>
+                </div>
+
+                <div class="reveal mt-6" style="transition-delay: 0.2s">
+                    <p class="text-[13px] md:text-[14px] text-muted leading-relaxed italic">
+                        &ldquo;Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang.&rdquo;
+                    </p>
+                    <p class="text-[10px] uppercase tracking-[0.4em] text-gold mt-4">QS. Ar-Rum : 21</p>
+                </div>
+
+                <div class="reveal mt-12 flex items-center justify-center gap-4" style="transition-delay: 0.3s">
+                    <span class="h-px w-16 bg-gold/40"></span>
+                    <svg class="w-3 h-3 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2 L15 9 L22 12 L15 15 L12 22 L9 15 L2 12 L9 9 Z"/></svg>
+                    <span class="h-px w-16 bg-gold/40"></span>
+                </div>
+
+                <div class="reveal mt-8" style="transition-delay: 0.4s">
+                    <p class="font-serif italic text-[15px] md:text-base text-rose-deep leading-relaxed">
+                        &ldquo;Sareundeuk saigel, sabobot sapihanean,<br>ka cai jadi saleuwi, ka darat jadi salebak.&rdquo;
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ═════ COUPLE ═════ -->
+        <section id="mempelai" class="py-24 md:py-32 px-6 bg-cream">
+            <div class="max-w-3xl mx-auto">
+
+                <div class="text-center mb-16 md:mb-20 reveal">
+                    <div class="section-label">
+                        <span class="h-px w-12 bg-gold/50"></span>
+                        <span class="text-[9px] uppercase tracking-[0.45em] text-rose">Mempelai</span>
+                        <span class="h-px w-12 bg-gold/50"></span>
+                    </div>
+                    <h2 class="font-display text-3xl md:text-5xl text-ink mt-4">The Bride & Groom</h2>
+                </div>
+
+                <div class="space-y-20 md:space-y-24">
+
+                    <!-- Groom -->
+                    <div class="reveal flex flex-col md:flex-row items-center gap-10 md:gap-16">
+                        <div class="relative shrink-0">
+                            <div class="absolute -inset-2 border border-gold/40 rounded-full"></div>
+                            <div class="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden shadow-xl">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80" alt="Deni Ramdani" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                            </div>
+                        </div>
+                        <div class="text-center md:text-left">
+                            <p class="text-[10px] uppercase tracking-[0.4em] text-rose mb-2">Mempelai Pria</p>
+                            <h3 class="font-script text-4xl md:text-5xl text-rose-deep mb-4">Deni Ramdani</h3>
+                            <p class="text-[12px] md:text-[13px] text-muted leading-relaxed">
                                 Putra dari<br>
-                                <span class="text-ink">Bapak H. Dadang Kurnia</span><br>
-                                &amp; <span class="text-ink">Ibu Hj. Nining Ratningsih</span>
+                                <span class="text-ink font-medium">Bapak H. Dadang Kurnia</span><br>
+                                &amp; <span class="text-ink font-medium">Ibu Hj. Nining Ratningsih</span>
                             </p>
                             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
-                               class="inline-block mt-5 text-[10px] md:text-[11px] tracking-[0.2em] text-muted hover:text-rose transition-colors">
-                                <i class="fa-brands fa-instagram mr-1.5 text-[9px]"></i>@deni_ramdani
+                               class="inline-flex items-center gap-2 mt-5 text-[11px] tracking-wider text-muted hover:text-rose transition-colors">
+                                <i class="fa-brands fa-instagram text-gold"></i>@deni_ramdani
                             </a>
                         </div>
                     </div>
 
-                    <div class="text-center space-y-5 md:space-y-6">
-                        <div class="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 mx-auto rounded-full overflow-hidden border border-line">
-                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80" alt="Novi Nuraini" class="w-full h-full object-cover">
+                    <!-- Ampersand divider -->
+                    <div class="reveal flex items-center justify-center gap-4">
+                        <span class="h-px w-20 bg-gold/40"></span>
+                        <span class="font-script text-5xl text-rose">and</span>
+                        <span class="h-px w-20 bg-gold/40"></span>
+                    </div>
+
+                    <!-- Bride -->
+                    <div class="reveal flex flex-col md:flex-row-reverse items-center gap-10 md:gap-16">
+                        <div class="relative shrink-0">
+                            <div class="absolute -inset-2 border border-gold/40 rounded-full"></div>
+                            <div class="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden shadow-xl">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80" alt="Novi Nuraini" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                            </div>
                         </div>
-                        <div>
-                            <h3 class="font-serif text-2xl md:text-3xl text-ink">Novi Nuraini</h3>
-                            <p class="text-[9px] md:text-[10px] uppercase tracking-[0.35em] text-rose mt-2">Mempelai Wanita</p>
-                            <p class="text-[12px] md:text-[13px] text-muted mt-5 md:mt-6 leading-relaxed">
+                        <div class="text-center md:text-right">
+                            <p class="text-[10px] uppercase tracking-[0.4em] text-rose mb-2">Mempelai Wanita</p>
+                            <h3 class="font-script text-4xl md:text-5xl text-rose-deep mb-4">Novi Nuraini</h3>
+                            <p class="text-[12px] md:text-[13px] text-muted leading-relaxed">
                                 Putri dari<br>
-                                <span class="text-ink">Bapak Drs. Asep Suherman</span><br>
-                                &amp; <span class="text-ink">Ibu Hj. Euis Komariah</span>
+                                <span class="text-ink font-medium">Bapak Drs. Asep Suherman</span><br>
+                                &amp; <span class="text-ink font-medium">Ibu Hj. Euis Komariah</span>
                             </p>
                             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
-                               class="inline-block mt-5 text-[10px] md:text-[11px] tracking-[0.2em] text-muted hover:text-rose transition-colors">
-                                <i class="fa-brands fa-instagram mr-1.5 text-[9px]"></i>@novi_nuraini
+                               class="inline-flex items-center gap-2 mt-5 text-[11px] tracking-wider text-muted hover:text-rose transition-colors">
+                                <i class="fa-brands fa-instagram text-gold"></i>@novi_nuraini
                             </a>
                         </div>
                     </div>
@@ -231,33 +317,60 @@
             </div>
         </section>
 
-        <!-- ─────────────── EVENTS ─────────────── -->
-        <section id="acara" class="py-24 md:py-32 px-6 bg-cream">
-            <div class="max-w-md md:max-w-4xl lg:max-w-5xl mx-auto">
+        <!-- ═════ EVENTS ═════ -->
+        <section id="acara" class="py-24 md:py-32 px-6 bg-blush relative">
+            <div class="max-w-4xl mx-auto">
 
-                <div class="text-center mb-16 md:mb-20">
-                    <p class="text-[10px] md:text-[11px] uppercase tracking-[0.4em] text-muted">Rangkaian Acara</p>
-                    <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl text-ink mt-2 md:mt-3">Waktu &amp; Tempat</h2>
+                <div class="text-center mb-16 md:mb-20 reveal">
+                    <div class="section-label">
+                        <span class="h-px w-12 bg-gold/50"></span>
+                        <span class="text-[9px] uppercase tracking-[0.45em] text-rose">Save The Date</span>
+                        <span class="h-px w-12 bg-gold/50"></span>
+                    </div>
+                    <h2 class="font-display text-3xl md:text-5xl text-ink mt-4">Waktu &amp; Tempat</h2>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-12 md:gap-10 lg:gap-16 text-center">
+                <div class="grid md:grid-cols-2 gap-6 md:gap-8">
 
-                    <div>
-                        <p class="text-[9px] md:text-[10px] uppercase tracking-[0.35em] text-rose mb-3 md:mb-4">Akad Nikah</p>
-                        <p class="font-serif text-xl md:text-2xl text-ink">Sabtu, 28 November 2026</p>
-                        <p class="text-[11px] md:text-[12px] text-muted mt-2">08.00 — 10.00 WIB</p>
-                        <p class="text-[12px] md:text-[13px] text-ink mt-4 md:mt-5 leading-relaxed">
+                    <div class="reveal bg-paper border border-gold/30 p-8 md:p-10 text-center shadow-sm hover:shadow-xl transition-shadow duration-500">
+                        <div class="w-14 h-14 mx-auto rounded-full bg-blush border border-gold/40 flex items-center justify-center mb-6">
+                            <i class="fa-solid fa-ring text-rose text-lg"></i>
+                        </div>
+                        <p class="text-[10px] uppercase tracking-[0.4em] text-rose mb-3">Akad Nikah</p>
+                        <h3 class="font-display text-2xl md:text-3xl text-ink mb-2">Sabtu, 28 November 2026</h3>
+                        <p class="text-[12px] text-muted mb-5"><i class="fa-regular fa-clock mr-1.5"></i>08.00 — 10.00 WIB</p>
+                        <div class="w-12 h-px bg-gold/50 mx-auto mb-5"></div>
+                        <p class="text-[13px] text-ink leading-relaxed">
                             <strong class="font-medium">Gedung Parahyangan</strong><br>
                             Jl. Raya Pajajaran No. 88<br>
                             Bandung, Jawa Barat
                         </p>
                     </div>
 
-                    <div class="md:border-l md:border-line md:pl-10 lg:pl-16">
-                        <p class="text-[9px] md:text-[10px] uppercase tracking-[0.35em] text-rose mb-3 md:mb-4">Resepsi</p>
-                        <p class="font-serif text-xl md:text-2xl text-ink">Sabtu, 28 November 2026</p>
-                        <p class="text-[11px] md:text-[12px] text-muted mt-2">11.00 — 16.00 WIB</p>
-                        <p class="text-[12px] md:text-[13px] text-ink mt-4 md:mt-5 leading-relaxed">
+                    <div class="reveal bg-paper border border-gold/30 p-8 md:p-10 text-center shadow-sm hover:shadow-xl transition-shadow duration-500" style="transition-delay: 0.15s">
+                        <div class="w-14 h-14 mx-auto rounded-full bg-blush border border-gold/40 flex items-center justify-center mb-6">
+                            <i class="fa-solid fa-ring text-rose text-lg"></i>
+                        </div>
+                        <p class="text-[10px] uppercase tracking-[0.4em] text-rose mb-3">Akad Nikah</p>
+                        <h3 class="font-display text-2xl md:text-3xl text-ink mb-2">Sabtu, 28 November 2026</h3>
+                        <p class="text-[12px] text-muted mb-5"><i class="fa-regular fa-clock mr-1.5"></i>08.00 — 10.00 WIB</p>
+                        <div class="w-12 h-px bg-gold/50 mx-auto mb-5"></div>
+                        <p class="text-[13px] text-ink leading-relaxed">
+                            <strong class="font-medium">Gedung Parahyangan</strong><br>
+                            Jl. Raya Pajajaran No. 88<br>
+                            Bandung, Jawa Barat
+                        </p>
+                    </div>
+
+                    <div class="reveal bg-paper border border-gold/30 p-8 md:p-10 text-center shadow-sm hover:shadow-xl transition-shadow duration-500" style="transition-delay: 0.15s">
+                        <div class="w-14 h-14 mx-auto rounded-full bg-blush border border-gold/40 flex items-center justify-center mb-6">
+                            <i class="fa-solid fa-champagne-glasses text-rose text-lg"></i>
+                        </div>
+                        <p class="text-[10px] uppercase tracking-[0.4em] text-rose mb-3">Resepsi</p>
+                        <h3 class="font-display text-2xl md:text-3xl text-ink mb-2">Sabtu, 28 November 2026</h3>
+                        <p class="text-[12px] text-muted mb-5"><i class="fa-regular fa-clock mr-1.5"></i>11.00 — 16.00 WIB</p>
+                        <div class="w-12 h-px bg-gold/50 mx-auto mb-5"></div>
+                        <p class="text-[13px] text-ink leading-relaxed">
                             <strong class="font-medium">Gedung Parahyangan</strong><br>
                             Jl. Raya Pajajaran No. 88<br>
                             Bandung, Jawa Barat
@@ -266,48 +379,50 @@
 
                 </div>
 
-                <div class="mt-14 md:mt-16 grid md:grid-cols-2 gap-3 md:gap-4 max-w-md md:max-w-xl mx-auto">
+                <div class="reveal mt-10 flex flex-col md:flex-row gap-3 max-w-lg mx-auto" style="transition-delay: 0.3s">
                     <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer"
-                       class="block w-full py-3.5 text-center border border-rose/50 text-rose text-[10px] md:text-[11px] uppercase tracking-[0.3em] hover:bg-rose hover:text-paper transition-colors duration-300">
-                        Lihat Lokasi
+                       class="flex-1 py-3.5 text-center border border-rose text-rose text-[10px] uppercase tracking-[0.35em] hover:bg-rose hover:text-paper transition-colors duration-300">
+                        <i class="fa-solid fa-map-location-dot mr-2 text-[11px]"></i>Lokasi
                     </a>
                     <button onclick="addToCalendar()"
-                            class="block w-full py-3.5 text-center border border-rose/50 text-rose text-[10px] md:text-[11px] uppercase tracking-[0.3em] hover:bg-rose hover:text-paper transition-colors duration-300">
-                        Simpan ke Kalender
+                            class="flex-1 py-3.5 border border-rose text-rose text-[10px] uppercase tracking-[0.35em] hover:bg-rose hover:text-paper transition-colors duration-300">
+                        <i class="fa-regular fa-calendar-plus mr-2 text-[11px]"></i>Kalender
                     </button>
                 </div>
             </div>
         </section>
 
-        <!-- ─────────────── GALLERY ─────────────── -->
-        <section id="galeri" class="py-24 md:py-32 px-6 bg-paper">
-            <div class="max-w-md md:max-w-4xl lg:max-w-6xl mx-auto">
+        <!-- ═════ GALLERY ═════ -->
+        <section id="galeri" class="py-24 md:py-32 px-6 bg-cream">
+            <div class="max-w-5xl mx-auto">
 
-                <div class="text-center mb-14 md:mb-16">
-                    <p class="text-[10px] md:text-[11px] uppercase tracking-[0.4em] text-muted">Galeri</p>
-                    <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl text-ink mt-2 md:mt-3">Momen</h2>
+                <div class="text-center mb-14 md:mb-20 reveal">
+                    <div class="section-label">
+                        <span class="h-px w-12 bg-gold/50"></span>
+                        <span class="text-[9px] uppercase tracking-[0.45em] text-rose">Our Moments</span>
+                        <span class="h-px w-12 bg-gold/50"></span>
+                    </div>
+                    <h2 class="font-display text-3xl md:text-5xl text-ink mt-4">Galeri</h2>
                 </div>
 
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1.5 md:gap-2 lg:gap-3">
-                    <div onclick="openLightbox('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=85')"
-                         class="aspect-[3/4] overflow-hidden cursor-pointer">
-                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80"
-                             alt="Galeri 1" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+                    <div class="reveal img-hover aspect-[3/4] overflow-hidden cursor-pointer col-span-1 row-span-1" onclick="openLightbox('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=85')">
+                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80" alt="" class="w-full h-full object-cover">
                     </div>
-                    <div onclick="openLightbox('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1600&q=85')"
-                         class="aspect-[3/4] overflow-hidden cursor-pointer">
-                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80"
-                             alt="Galeri 2" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                    <div class="reveal img-hover aspect-[3/4] overflow-hidden cursor-pointer" style="transition-delay: 0.1s" onclick="openLightbox('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1600&q=85')">
+                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80" alt="" class="w-full h-full object-cover">
                     </div>
-                    <div onclick="openLightbox('https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1600&q=85')"
-                         class="aspect-[3/4] overflow-hidden cursor-pointer">
-                        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80"
-                             alt="Galeri 3" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                    <div class="reveal img-hover aspect-[3/4] overflow-hidden cursor-pointer" style="transition-delay: 0.2s" onclick="openLightbox('https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1600&q=85')">
+                        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80" alt="" class="w-full h-full object-cover">
                     </div>
-                    <div onclick="openLightbox('https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1600&q=85')"
-                         class="aspect-[3/4] overflow-hidden cursor-pointer">
-                        <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=600&q=80"
-                             alt="Galeri 4" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                    <div class="reveal img-hover aspect-[3/4] overflow-hidden cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1600&q=85')">
+                        <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=600&q=80" alt="" class="w-full h-full object-cover">
+                    </div>
+                    <div class="reveal img-hover aspect-[3/4] overflow-hidden cursor-pointer" style="transition-delay: 0.1s" onclick="openLightbox('https://images.unsplash.com/photo-1606216794074-735e91aa2c92?auto=format&fit=crop&w=1600&q=85')">
+                        <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?auto=format&fit=crop&w=600&q=80" alt="" class="w-full h-full object-cover">
+                    </div>
+                    <div class="reveal img-hover aspect-[3/4] overflow-hidden cursor-pointer" style="transition-delay: 0.2s" onclick="openLightbox('https://images.unsplash.com/photo-1591604466107-ec97de577aff?auto=format&fit=crop&w=1600&q=85')">
+                        <img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?auto=format&fit=crop&w=600&q=80" alt="" class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
@@ -318,103 +433,127 @@
             <button onclick="closeLightbox()" class="absolute top-6 right-6 text-paper/80 hover:text-paper text-xl w-10 h-10 flex items-center justify-center">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <img id="lightboxImg" src="" alt="" class="max-w-full max-h-[85vh] object-contain">
+            <img id="lightboxImg" src="" alt="" class="max-w-full max-h-[85vh] object-contain shadow-2xl">
         </div>
 
-        <!-- ─────────────── GIFT ─────────────── -->
-        <section id="hadiah" class="py-24 md:py-32 px-6 bg-cream">
-            <div class="max-w-md md:max-w-3xl mx-auto text-center">
+        <!-- ═════ GIFT ═════ -->
+        <section id="hadiah" class="py-24 md:py-32 px-6 bg-blush">
+            <div class="max-w-3xl mx-auto">
 
-                <p class="text-[10px] md:text-[11px] uppercase tracking-[0.4em] text-muted">Tanda Kasih</p>
-                <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl text-ink mt-2 md:mt-3">Amplop Digital</h2>
-                <p class="text-[12px] md:text-[13px] text-muted mt-4 md:mt-5 leading-relaxed max-w-md mx-auto">
-                    Doa restu Anda merupakan karunia terindah bagi kami. Jika berkenan memberi tanda kasih, dapat melalui:
-                </p>
+                <div class="text-center mb-14 reveal">
+                    <div class="section-label">
+                        <span class="h-px w-12 bg-gold/50"></span>
+                        <span class="text-[9px] uppercase tracking-[0.45em] text-rose">Wedding Gift</span>
+                        <span class="h-px w-12 bg-gold/50"></span>
+                    </div>
+                    <h2 class="font-display text-3xl md:text-5xl text-ink mt-4">Amplop Digital</h2>
+                    <p class="text-[12px] md:text-[13px] text-muted mt-4 leading-relaxed max-w-md mx-auto">
+                        Doa restu Anda merupakan karunia terindah bagi kami. Jika berkenan memberi tanda kasih, dapat melalui:
+                    </p>
+                </div>
 
-                <div class="mt-10 md:mt-14 grid md:grid-cols-2 gap-4 md:gap-6 text-left">
-                    <div class="border border-line p-6 md:p-7 bg-paper">
-                        <p class="text-[9px] md:text-[10px] uppercase tracking-[0.35em] text-muted mb-3">Bank BCA</p>
-                        <p class="font-serif text-xl md:text-2xl text-ink tracking-wide">8290 1234 56</p>
-                        <p class="text-[11px] md:text-[12px] text-muted mt-2">a.n. Deni Ramdani</p>
+                <div class="grid md:grid-cols-2 gap-5 md:gap-6">
+
+                    <div class="reveal bg-paper border border-gold/30 p-7 md:p-8 relative">
+                        <div class="absolute top-0 right-0 w-16 h-16 border-t border-r border-gold/40"></div>
+                        <p class="text-[10px] uppercase tracking-[0.4em] text-rose mb-4">Bank BCA</p>
+                        <p class="font-display text-2xl text-ink tracking-wider">8290 1234 56</p>
+                        <p class="text-[11px] text-muted mt-2">a.n. Deni Ramdani</p>
                         <button onclick="copyToClipboard('8290123456', 'BCA')"
-                                class="mt-5 text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-rose hover:text-rose-deep transition-colors">
-                            Salin Nomor →
+                                class="mt-5 inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] text-gold hover:text-rose-deep transition-colors">
+                            <i class="fa-regular fa-copy"></i>Salin Nomor
                         </button>
                     </div>
 
-                    <div class="border border-line p-6 md:p-7 bg-paper">
-                        <p class="text-[9px] md:text-[10px] uppercase tracking-[0.35em] text-muted mb-3">Bank Mandiri</p>
-                        <p class="font-serif text-xl md:text-2xl text-ink tracking-wide">1310 0098 7654 3</p>
-                        <p class="text-[11px] md:text-[12px] text-muted mt-2">a.n. Novi Nuraini</p>
+                    <div class="reveal bg-paper border border-gold/30 p-7 md:p-8 relative" style="transition-delay: 0.15s">
+                        <div class="absolute top-0 right-0 w-16 h-16 border-t border-r border-gold/40"></div>
+                        <p class="text-[10px] uppercase tracking-[0.4em] text-rose mb-4">Bank Mandiri</p>
+                        <p class="font-display text-2xl text-ink tracking-wider">1310 0098 7654</p>
+                        <p class="text-[11px] text-muted mt-2">a.n. Novi Nuraini</p>
                         <button onclick="copyToClipboard('1310009876543', 'Mandiri')"
-                                class="mt-5 text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-rose hover:text-rose-deep transition-colors">
-                            Salin Nomor →
+                                class="mt-5 inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] text-gold hover:text-rose-deep transition-colors">
+                            <i class="fa-regular fa-copy"></i>Salin Nomor
                         </button>
                     </div>
+
                 </div>
             </div>
         </section>
 
-        <!-- ─────────────── RSVP ─────────────── -->
-        <section id="rsvp" class="py-24 md:py-32 px-6 bg-paper">
-            <div class="max-w-md md:max-w-4xl lg:max-w-5xl mx-auto">
+        <!-- ═════ RSVP ═════ -->
+        <section id="rsvp" class="py-24 md:py-32 px-6 bg-cream">
+            <div class="max-w-4xl mx-auto">
 
-                <div class="text-center mb-14 md:mb-16">
-                    <p class="text-[10px] md:text-[11px] uppercase tracking-[0.4em] text-muted">Konfirmasi</p>
-                    <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl text-ink mt-2 md:mt-3">Buku Tamu</h2>
+                <div class="text-center mb-14 md:mb-20 reveal">
+                    <div class="section-label">
+                        <span class="h-px w-12 bg-gold/50"></span>
+                        <span class="text-[9px] uppercase tracking-[0.45em] text-rose">RSVP</span>
+                        <span class="h-px w-12 bg-gold/50"></span>
+                    </div>
+                    <h2 class="font-display text-3xl md:text-5xl text-ink mt-4">Buku Tamu</h2>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-14 md:gap-10 lg:gap-16">
+                <div class="grid md:grid-cols-2 gap-12 md:gap-10">
 
-                    <form id="rsvpForm" class="space-y-6 md:space-y-7">
+                    <form id="rsvpForm" class="reveal space-y-6">
                         <div>
-                            <label class="block text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-muted mb-2">Nama</label>
+                            <label class="block text-[9px] uppercase tracking-[0.35em] text-muted mb-2">Nama</label>
                             <input type="text" id="inputName" required placeholder="Nama lengkap"
-                                   class="w-full px-0 py-2.5 bg-transparent border-0 border-b border-line text-sm md:text-base text-ink placeholder:text-muted/50">
+                                   class="w-full px-0 py-2.5 bg-transparent border-0 border-b border-line text-sm text-ink placeholder:text-muted/40 focus:border-rose">
                         </div>
                         <div>
-                            <label class="block text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-muted mb-2">Kehadiran</label>
+                            <label class="block text-[9px] uppercase tracking-[0.35em] text-muted mb-2">Kehadiran</label>
                             <select id="inputAttendance" required
-                                    class="w-full px-0 py-2.5 bg-transparent border-0 border-b border-line text-sm md:text-base text-ink appearance-none">
+                                    class="w-full px-0 py-2.5 bg-transparent border-0 border-b border-line text-sm text-ink appearance-none focus:border-rose">
                                 <option value="Hadir">Saya akan hadir</option>
                                 <option value="Tidak Hadir">Maaf, tidak bisa hadir</option>
                                 <option value="Ragu-ragu">Masih ragu-ragu</option>
                             </select>
                         </div>
                         <div>
-                            <label class="block text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-muted mb-2">Doa &amp; Ucapan</label>
-                            <textarea id="inputWish" rows="4" required placeholder="Tuliskan doa untuk kedua mempelai..."
-                                      class="w-full px-0 py-2.5 bg-transparent border-0 border-b border-line text-sm md:text-base text-ink placeholder:text-muted/50 resize-none"></textarea>
+                            <label class="block text-[9px] uppercase tracking-[0.35em] text-muted mb-2">Doa &amp; Ucapan</label>
+                            <textarea id="inputWish" rows="4" required placeholder="Tuliskan doa..."
+                                      class="w-full px-0 py-2.5 bg-transparent border-0 border-b border-line text-sm text-ink placeholder:text-muted/40 resize-none focus:border-rose"></textarea>
                         </div>
                         <button type="submit"
-                                class="w-full py-3.5 md:py-4 bg-rose text-paper text-[10px] md:text-[11px] uppercase tracking-[0.35em] hover:bg-rose-deep transition-colors duration-300">
+                                class="w-full py-4 bg-rose text-paper text-[10px] uppercase tracking-[0.4em] hover:bg-rose-deep transition-colors shadow-sm hover:shadow-md">
                             Kirim Ucapan
                         </button>
                     </form>
 
-                    <div>
-                        <div class="flex items-baseline justify-between mb-4 pb-3 border-b border-line">
-                            <h3 class="text-[10px] md:text-[11px] uppercase tracking-[0.3em] text-muted">Ucapan Terbaru</h3>
-                            <span id="wishCountBadge" class="text-[9px] md:text-[10px] tracking-wider text-muted">0</span>
+                    <div class="reveal" style="transition-delay: 0.15s">
+                        <div class="flex items-baseline justify-between mb-4 pb-3 border-b border-gold/40">
+                            <h3 class="text-[10px] uppercase tracking-[0.35em] text-rose">Ucapan Terbaru</h3>
+                            <span id="wishCountBadge" class="text-[9px] tracking-wider text-muted">0</span>
                         </div>
-                        <div id="wishFeedList" class="max-h-[480px] overflow-y-auto -mr-2 pr-2"></div>
+                        <div id="wishFeedList" class="max-h-[400px] overflow-y-auto -mr-2 pr-2"></div>
                     </div>
 
                 </div>
             </div>
         </section>
 
-        <!-- ─────────────── FOOTER ─────────────── -->
-        <footer class="py-16 md:py-24 px-6 bg-cream text-center">
-            <p class="text-[12px] md:text-[14px] text-muted max-w-md mx-auto leading-relaxed">
-                Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.
-            </p>
-            <p class="font-serif italic text-2xl md:text-4xl text-ink mt-8 md:mt-10">Hatur Nuhun</p>
-            <p class="text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-muted mt-3 md:mt-4">Deni &amp; Novi</p>
+        <!-- ═════ FOOTER ═════ -->
+        <footer class="py-20 md:py-28 px-6 bg-blush text-center relative overflow-hidden">
+            <div class="corner corner-tl-gold"></div>
+            <div class="corner corner-tr-gold"></div>
 
-            <div class="mt-12 md:mt-16 pt-6 md:pt-8 border-t border-line max-w-md mx-auto">
-                <p class="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-muted/70">
-                    &copy; 2026 — Made with care
+            <div class="reveal max-w-md mx-auto">
+                <div class="monogram mx-auto mb-8">
+                    <div class="monogram-inner">
+                        <span class="font-script text-2xl text-rose-deep">D & N</span>
+                    </div>
+                </div>
+                <p class="text-[12px] md:text-[13px] text-muted leading-relaxed">
+                    Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.
+                </p>
+                <p class="font-script text-4xl md:text-5xl text-rose-deep mt-8">Hatur Nuhun</p>
+                <p class="text-[10px] uppercase tracking-[0.4em] text-muted mt-4">Deni &amp; Novi</p>
+            </div>
+
+            <div class="mt-16 pt-6 border-t border-gold/30 max-w-md mx-auto">
+                <p class="text-[9px] uppercase tracking-[0.35em] text-muted/60">
+                    &copy; 2026 — Made with love
                 </p>
             </div>
         </footer>
@@ -422,37 +561,36 @@
 
     <!-- Toast -->
     <div id="toastNotification"
-         class="fixed bottom-28 md:bottom-24 left-1/2 -translate-x-1/2 bg-ink text-paper text-[10px] md:text-[11px] uppercase tracking-[0.2em] px-4 py-3 opacity-0 pointer-events-none transition-all duration-300 z-50 flex items-center gap-2 whitespace-nowrap rounded-full">
-        <i id="toastIcon" class="fa-solid fa-check text-[9px] text-blush"></i>
+         class="fixed bottom-28 md:bottom-24 left-1/2 -translate-x-1/2 bg-ink text-paper text-[10px] uppercase tracking-[0.25em] px-5 py-3 opacity-0 pointer-events-none transition-all duration-300 z-50 flex items-center gap-2 whitespace-nowrap shadow-2xl">
+        <i id="toastIcon" class="fa-solid fa-check text-gold text-[10px]"></i>
         <span id="toastMsg">Notifikasi</span>
     </div>
 
     <!-- Bottom Nav -->
     <nav id="bottomNav"
-         class="fixed bottom-0 md:bottom-6 left-1/2 -translate-x-1/2 z-40 bg-paper/95 md:bg-paper backdrop-blur border-t md:border md:rounded-full border-line flex justify-around md:justify-center items-center gap-0 md:gap-1 w-full max-w-md md:max-w-fit py-2.5 md:py-2 md:px-4 md:shadow-xl">
+         class="fixed bottom-0 md:bottom-6 left-1/2 -translate-x-1/2 z-40 bg-white/95 backdrop-blur-md md:rounded-full border-t md:border border-line flex justify-around md:justify-center items-center w-full max-w-md md:max-w-fit py-2.5 md:py-2 md:px-4 shadow-lg">
         <a href="#hero" class="flex flex-col md:flex-row items-center text-muted hover:text-rose md:px-3 md:py-2 md:rounded-full md:hover:bg-blush transition-colors gap-1 md:gap-2">
             <i class="fa-solid fa-house text-[10px] md:text-xs"></i>
-            <span class="text-[8px] md:text-[10px] uppercase tracking-[0.1em] md:tracking-wider">Beranda</span>
+            <span class="text-[8px] md:text-[9px] uppercase tracking-wider">Home</span>
         </a>
         <a href="#mempelai" class="flex flex-col md:flex-row items-center text-muted hover:text-rose md:px-3 md:py-2 md:rounded-full md:hover:bg-blush transition-colors gap-1 md:gap-2">
             <i class="fa-regular fa-heart text-[10px] md:text-xs"></i>
-            <span class="text-[8px] md:text-[10px] uppercase tracking-[0.1em] md:tracking-wider">Mempelai</span>
+            <span class="text-[8px] md:text-[9px] uppercase tracking-wider">Mempelai</span>
         </a>
         <a href="#acara" class="flex flex-col md:flex-row items-center text-muted hover:text-rose md:px-3 md:py-2 md:rounded-full md:hover:bg-blush transition-colors gap-1 md:gap-2">
             <i class="fa-regular fa-calendar text-[10px] md:text-xs"></i>
-            <span class="text-[8px] md:text-[10px] uppercase tracking-[0.1em] md:tracking-wider">Acara</span>
+            <span class="text-[8px] md:text-[9px] uppercase tracking-wider">Acara</span>
         </a>
         <a href="#galeri" class="flex flex-col md:flex-row items-center text-muted hover:text-rose md:px-3 md:py-2 md:rounded-full md:hover:bg-blush transition-colors gap-1 md:gap-2">
             <i class="fa-regular fa-images text-[10px] md:text-xs"></i>
-            <span class="text-[8px] md:text-[10px] uppercase tracking-[0.1em] md:tracking-wider">Galeri</span>
+            <span class="text-[8px] md:text-[9px] uppercase tracking-wider">Galeri</span>
         </a>
         <a href="#rsvp" class="flex flex-col md:flex-row items-center text-muted hover:text-rose md:px-3 md:py-2 md:rounded-full md:hover:bg-blush transition-colors gap-1 md:gap-2">
             <i class="fa-regular fa-pen-to-square text-[10px] md:text-xs"></i>
-            <span class="text-[8px] md:text-[10px] uppercase tracking-[0.1em] md:tracking-wider">RSVP</span>
+            <span class="text-[8px] md:text-[9px] uppercase tracking-wider">RSVP</span>
         </a>
     </nav>
 
-    <!-- Path RELATIF — tanpa leading slash -->
     <script src="script.js"></script>
 </body>
 </html>
