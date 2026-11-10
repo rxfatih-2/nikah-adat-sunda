@@ -3,961 +3,463 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Pernikahan Deni & Novi - Adat Sunda</title>
+    <title>Undangan Pernikahan Deni & Novi</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Tailwind CSS CDN -->
+    <!-- Tailwind CDN (HARUS load sebelum config) -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!--
+        ⚠️ WAJIB INLINE: tailwind.config harus diset setelah CDN load.
+        Tidak bisa dipindah ke .js external — Tailwind CDN inject config
+        langsung ke global scope saat script dieksekusi.
+    -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        sunda: {
-                            bg: '#FFF0F5',
-                            card: '#FFFFFF',
-                            primary: '#D81B60',
-                            primaryHover: '#AD1457',
-                            softPink: '#FCE4EC',
-                            borderPink: '#F8BBD0',
-                            roseGold: '#E5B869',
-                            goldLight: '#F3E5AB',
-                            dark: '#2C1820',
-                            muted: '#6D4C5A'
-                        }
+                        cream: '#FFF8F8',
+                        paper: '#FFFFFF',
+                        blush: '#FCE9EC',
+                        rose: '#B85C6E',
+                        'rose-deep': '#8A3E4D',
+                        ink: '#2B1F23',
+                        muted: '#8A7078',
+                        line: '#F0DDE1',
                     },
                     fontFamily: {
                         serif: ['"Cormorant Garamond"', 'serif'],
                         sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        cursive: ['"Great Vibes"', 'cursive']
-                    },
-                    keyframes: {
-                        pulseSlow: {
-                            '0%, 100%': { transform: 'scale(1)', opacity: '0.9' },
-                            '50%': { transform: 'scale(1.05)', opacity: '1' }
-                        },
-                        floatSlow: {
-                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
-                            '50%': { transform: 'translateY(-10px) rotate(2deg)' }
-                        },
-                        shimmer: {
-                            '0%': { backgroundPosition: '-200% 0' },
-                            '100%': { backgroundPosition: '200% 0' }
-                        },
-                        curtainUp: {
-                            '0%': { transform: 'translateY(0%)', opacity: '1' },
-                            '100%': { transform: 'translateY(-100%)', opacity: '0' }
-                        },
-                        barWave: {
-                            '0%, 100%': { height: '4px' },
-                            '50%': { height: '16px' }
-                        }
-                    },
-                    animation: {
-                        'pulse-slow': 'pulseSlow 4s ease-in-out infinite',
-                        'float-slow': 'floatSlow 5s ease-in-out infinite',
-                        'shimmer': 'shimmer 3s linear infinite',
-                        'bar-wave-1': 'barWave 1s ease-in-out infinite 0.1s',
-                        'bar-wave-2': 'barWave 1s ease-in-out infinite 0.3s',
-                        'bar-wave-3': 'barWave 1s ease-in-out infinite 0.2s',
-                        'bar-wave-4': 'barWave 1s ease-in-out infinite 0.4s'
                     }
                 }
             }
         }
     </script>
 
-    <!-- Font Awesome Icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <style>
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #FFF0F5; }
-        ::-webkit-scrollbar-thumb { background: #F8BBD0; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #D81B60; }
-
-        /* Lock Scroll Class for Initial State */
-        .lock-scroll {
-            overflow: hidden !important;
-            height: 100vh !important;
-            position: fixed !important;
-            width: 100% !important;
-            touch-action: none !important;
-        }
-
-        /* Glassmorphism Effect */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(248, 187, 208, 0.5);
-        }
-
-        /* Gold Gradient Text */
-        .text-gradient-gold {
-            background: linear-gradient(135deg, #D81B60 0%, #E5B869 50%, #C2185B 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Subtle Sundanese Batik Floral Watermark */
-        .bg-pattern {
-            background-color: #FFF0F5;
-            background-image: radial-gradient(#D81B60 0.4px, transparent 0.4px), radial-gradient(#E5B869 0.4px, #FFF0F5 0.4px);
-            background-size: 24px 24px;
-            background-position: 0 0, 12px 12px;
-        }
-
-        /* Falling Petal Canvas Overlay */
-        #petalCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 30;
-        }
-
-        /* Glowing Ripple Button */
-        .btn-ripple {
-            position: relative;
-            overflow: hidden;
-        }
-        .btn-ripple::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 300px;
-            height: 300px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            opacity: 0;
-            transition: transform 0.6s ease-out, opacity 0.6s ease-out;
-        }
-        .btn-ripple:active::after {
-            transform: translate(-50%, -50%) scale(1);
-            opacity: 1;
-            transition: 0s;
-        }
-    </style>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="lock-scroll bg-slate-950 text-sunda-dark font-sans antialiased selection:bg-sunda-primary selection:text-white">
+<body class="lock-scroll bg-cream text-ink font-sans antialiased selection:bg-rose selection:text-paper">
 
-    <!-- FALLING PETALS CANVAS BACKGROUND -->
-    <canvas id="petalCanvas"></canvas>
+    <!-- ═══════════════════════════════════════════════════════
+         OPENING COVER — INTRO SEQUENCE
+         ═══════════════════════════════════════════════════════ -->
+    <div id="openingCover" class="fixed inset-0 z-[9999] bg-paper texture flex items-center justify-center px-6">
 
-    <!-- ==================== 1. SOLID FULLSCREEN COVER / GATE UNDANGAN ==================== -->
-    <div id="openingCover" class="fixed inset-0 z-[9999] w-full h-full bg-[#FFF5F7] flex flex-col justify-between items-center text-center p-6 shadow-2xl transition-transform duration-800">
-        
-        <!-- TOP ORNAMENT: SIGER SUNDA SVG ARTWORK -->
-        <div class="w-full pt-8 flex flex-col items-center animate-float-slow">
-            <svg class="w-28 h-16 text-sunda-roseGold drop-shadow-md" viewBox="0 0 120 60" fill="currentColor">
-                <!-- Siger Sunda Motif -->
-                <path d="M60 2 C48 18 36 22 10 14 C24 35 44 42 60 58 C76 42 96 35 110 14 C84 22 72 18 60 2 Z" opacity="0.95"/>
-                <!-- Crown Jewels Details -->
-                <circle cx="60" cy="14" r="4" fill="#D81B60"/>
-                <circle cx="38" cy="22" r="3" fill="#D81B60"/>
-                <circle cx="82" cy="22" r="3" fill="#D81B60"/>
-                <circle cx="20" cy="20" r="2.5" fill="#E5B869"/>
-                <circle cx="100" cy="20" r="2.5" fill="#E5B869"/>
-                <!-- Floral Swirl Bottom -->
-                <path d="M30 45 Q60 55 90 45" stroke="#D81B60" stroke-width="2" fill="none" stroke-linecap="round"/>
-            </svg>
+        <div class="intro-line absolute top-0 w-px h-20 md:h-32 bg-line" style="left: calc(50% - 0.5px); animation-delay: 0.2s"></div>
+        <div class="intro-line-bottom absolute bottom-0 w-px h-20 md:h-32 bg-line" style="left: calc(50% - 0.5px); animation-delay: 0.2s"></div>
 
-            <div class="flex items-center space-x-2 mt-3">
-                <span class="h-px w-8 bg-sunda-roseGold"></span>
-                <span class="text-[10px] uppercase tracking-[0.3em] text-sunda-primary font-bold">Wilujeng Sumping</span>
-                <span class="h-px w-8 bg-sunda-roseGold"></span>
+        <div class="w-full max-w-sm md:max-w-lg lg:max-w-2xl text-center space-y-6 md:space-y-8">
+
+            <div class="overflow-hidden">
+                <p class="intro-fade text-[10px] md:text-[11px] uppercase tracking-[0.5em] text-muted" style="animation-delay: 0.55s">
+                    The Wedding Of
+                </p>
             </div>
-            <p class="text-xs font-serif italic text-sunda-muted mt-1">Undangan Pernikahan Adat Sunda</p>
-        </div>
 
-        <!-- MAIN COVER DETAILS -->
-        <div class="my-auto flex flex-col items-center space-y-5">
-            
-            <!-- COUPLE AVATAR FRAME WITH RONCE MELATI RING -->
-            <div class="relative w-40 h-40 rounded-full p-2 bg-gradient-to-tr from-sunda-roseGold via-sunda-primary to-sunda-borderPink shadow-2xl animate-pulse-slow">
-                <div class="w-full h-full rounded-full overflow-hidden border-2 border-white shadow-inner">
-                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80" alt="Deni & Novi" class="w-full h-full object-cover">
-                </div>
-                <!-- Sundanese Jasmine Ornament Badge -->
-                <div class="absolute -bottom-2 bg-white px-3 py-0.5 rounded-full border border-sunda-roseGold shadow-md text-[10px] text-sunda-primary font-serif font-bold">
-                    &bull; 28 . 11 . 2026 &bull;
+            <div class="overflow-hidden pb-2 md:pb-4">
+                <h1 class="intro-slide font-serif text-6xl md:text-8xl lg:text-9xl text-ink leading-[0.95]" style="animation-delay: 0.95s">
+                    Deni <span class="italic text-rose">&</span> Novi
+                </h1>
+            </div>
+
+            <div class="overflow-hidden">
+                <div class="intro-fade flex items-center justify-center gap-3 md:gap-4" style="animation-delay: 1.45s">
+                    <span class="h-px w-8 md:w-14 bg-line"></span>
+                    <span class="text-[10px] md:text-xs tracking-[0.35em] text-muted">28 · 11 · 2026</span>
+                    <span class="h-px w-8 md:w-14 bg-line"></span>
                 </div>
             </div>
 
-            <div>
-                <h1 class="font-cursive text-5xl text-gradient-gold py-1 drop-shadow-sm">Deni & Novi</h1>
-                <p class="text-[11px] uppercase tracking-[0.25em] text-sunda-muted font-medium mt-1">Sabtu, 28 November 2026</p>
+            <div class="overflow-hidden pt-6 md:pt-10">
+                <div class="intro-fade" style="animation-delay: 1.8s">
+                    <p class="text-[9px] md:text-[10px] uppercase tracking-[0.35em] text-muted mb-2">Kepada</p>
+                    <p id="guestNameDisplay" class="font-serif text-xl md:text-2xl text-ink truncate px-4">Tamu Undangan</p>
+                </div>
             </div>
 
-            <!-- DYNAMIC GUEST RECIPIENT CARD -->
-            <div class="w-full max-w-xs bg-white/95 backdrop-blur-md rounded-2xl p-4 border border-sunda-borderPink shadow-lg text-center transform transition duration-300 hover:scale-105">
-                <p class="text-[10px] text-sunda-muted uppercase tracking-widest font-semibold mb-1">Katuragan Kahatur Bapak/Ibu/Saudara/i:</p>
-                <h3 id="guestNameDisplay" class="font-serif font-bold text-lg text-sunda-dark capitalize truncate text-sunda-primary">
-                    Sobat Math Angkatan 1
-                </h3>
-                <p class="text-[10px] text-sunda-muted italic mt-0.5">Di Tempat</p>
+            <div class="overflow-hidden pt-4 md:pt-6">
+                <div class="intro-fade" style="animation-delay: 2.15s">
+                    <button onclick="openInvitation()"
+                            class="group inline-flex items-center gap-3 px-8 md:px-10 py-3.5 border border-rose/50 text-rose text-[10px] md:text-[11px] uppercase tracking-[0.3em] hover:bg-rose hover:text-paper transition-colors duration-500 cursor-pointer">
+                        <span>Buka Undangan</span>
+                        <i class="fa-solid fa-arrow-right text-[9px] group-hover:translate-x-1 transition-transform duration-300"></i>
+                    </button>
+                </div>
             </div>
-        </div>
 
-        <!-- OPEN INVITATION BUTTON WITH RIPPLE & FLOURISH -->
-        <div class="w-full max-w-xs pb-8">
-            <button id="btnOpenInvitation" onclick="openInvitation()" class="btn-ripple w-full py-4 px-6 bg-gradient-to-r from-sunda-primary via-sunda-primaryHover to-sunda-primary text-white rounded-full font-semibold shadow-xl hover:shadow-2xl transform active:scale-95 transition-all duration-300 flex items-center justify-center space-x-3 group border border-sunda-roseGold/40 cursor-pointer">
-                <i class="fa-solid fa-envelope-open-text text-base group-hover:scale-125 transition-transform duration-300"></i>
-                <span class="tracking-wider text-xs uppercase font-bold">Buka Undangan</span>
-            </button>
-            <p class="text-[10px] text-sunda-muted mt-3 flex items-center justify-center space-x-1.5">
-                <i class="fa-solid fa-music text-sunda-primary text-[10px] animate-bounce"></i>
-                <span>Dilengkapi Musik Latar Adat Sunda</span>
-            </p>
         </div>
     </div>
 
-    <!-- MAIN WRAPPER FRAME (Mobile Frame on Desktop View) -->
-    <div class="min-h-screen bg-slate-950 flex justify-center items-center">
-        
-        <div id="mainContent" class="main-content w-full max-w-md min-h-screen bg-pattern shadow-2xl relative overflow-x-hidden pb-20 border-x border-sunda-borderPink/30">
+    <!-- ═══════════════════════════════════════════════════════
+         MAIN CONTENT
+         ═══════════════════════════════════════════════════════ -->
+    <div id="mainContent" class="w-full pb-24 md:pb-32">
 
-            <!-- ==================== 2. FLOATING AUDIO CONTROL & VISUALIZER ==================== -->
-            <div id="audioContainer" class="fixed bottom-20 right-4 z-40 hidden flex items-center space-x-2">
-                <!-- Audio Equalizer Visualizer Bars -->
-                <div id="audioVisualizer" class="flex items-end space-x-0.5 h-4 bg-white/80 backdrop-blur-md px-2 py-1 rounded-full border border-sunda-borderPink shadow-sm">
-                    <span class="w-0.5 bg-sunda-primary rounded-full animate-bar-wave-1"></span>
-                    <span class="w-0.5 bg-sunda-primary rounded-full animate-bar-wave-2"></span>
-                    <span class="w-0.5 bg-sunda-primary rounded-full animate-bar-wave-3"></span>
-                    <span class="w-0.5 bg-sunda-primary rounded-full animate-bar-wave-4"></span>
-                </div>
+        <!-- Audio toggle -->
+        <div id="audioContainer" class="fixed bottom-24 md:bottom-8 right-4 md:right-6 z-40 hidden">
+            <button id="audioToggleBtn" onclick="toggleAudio()"
+                    class="w-10 h-10 md:w-12 md:h-12 bg-paper border border-line text-rose rounded-full shadow-lg flex items-center justify-center transition-all active:scale-90 hover:bg-rose hover:text-paper"
+                    title="Putar / Hentikan Musik">
+                <i id="audioIcon" class="fa-solid fa-music text-xs md:text-sm"></i>
+            </button>
+        </div>
 
-                <button id="audioToggleBtn" onclick="toggleAudio()" class="w-11 h-11 bg-white border-2 border-sunda-primary text-sunda-primary rounded-full shadow-xl flex items-center justify-center backdrop-blur-md transition-transform active:scale-90" title="Putar / Hentikan Musik">
-                    <i id="audioIcon" class="fa-solid fa-compact-disc text-xl animate-spin-slow"></i>
-                </button>
+        <!-- Backsound: URL direct (SoundHelix, no 403) -->
+        <audio id="bgAudio" loop preload="auto" playsinline
+               src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3"></audio>
+
+        <!-- ─────────────── HERO ─────────────── -->
+        <section id="hero" class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 py-24 bg-paper">
+
+            <p class="text-[10px] md:text-xs uppercase tracking-[0.5em] text-muted mb-8 md:mb-12">Pernikahan</p>
+
+            <h1 class="font-serif text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-ink leading-[0.9]">
+                Deni <span class="italic text-rose">&</span><br class="sm:hidden"> <span class="hidden sm:inline italic text-rose">&</span> Novi
+            </h1>
+
+            <div class="flex items-center justify-center gap-4 md:gap-6 mt-8 md:mt-12">
+                <span class="h-px w-10 md:w-16 bg-line"></span>
+                <p class="text-[10px] md:text-xs tracking-[0.35em] text-muted">28 · 11 · 2026</p>
+                <span class="h-px w-10 md:w-16 bg-line"></span>
             </div>
 
-            <!-- AUDIO ELEMENT -->
-            <audio id="bgAudio" loop preload="auto">
-                <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-wedding-113337.mp3" type="audio/mpeg">
-            </audio>
-
-            <!-- ==================== 3. HERO SECTION ==================== -->
-            <section id="hero" class="relative min-h-screen flex flex-col items-center justify-center text-center p-6 bg-gradient-to-b from-white via-sunda-softPink/30 to-sunda-bg overflow-hidden pt-12">
-                
-                <!-- Sundanese Decorative Corner Framing -->
-                <div class="absolute top-4 left-4 text-sunda-primary opacity-30">
-                    <svg class="w-14 h-14" viewBox="0 0 100 100" fill="currentColor"><path d="M0 0 L50 0 C30 25 25 30 0 50 Z"/></svg>
-                </div>
-                <div class="absolute top-4 right-4 text-sunda-primary opacity-30 transform rotate-90">
-                    <svg class="w-14 h-14" viewBox="0 0 100 100" fill="currentColor"><path d="M0 0 L50 0 C30 25 25 30 0 50 Z"/></svg>
-                </div>
-
-                <div class="relative z-10 space-y-4">
-                    <span class="inline-block px-4 py-1 rounded-full bg-sunda-softPink text-sunda-primary text-[10px] tracking-widest font-bold uppercase border border-sunda-borderPink">
-                        Walimatul 'Ursy
-                    </span>
-
-                    <h2 class="text-xs uppercase tracking-[0.25em] text-sunda-muted font-medium">Pernikahan Adat Sunda</h2>
-                    
-                    <h1 class="font-cursive text-6xl text-gradient-gold py-2">Deni & Novi</h1>
-                    
-                    <p class="text-xs text-sunda-dark max-w-xs mx-auto leading-relaxed font-serif italic">
-                        "Mugia dina panganten ieu dilimpahkeun rahmat, kawijaksanaan, sareng kabagjaan nu langgeng dugi ka jannah."
-                    </p>
-
-                    <!-- REAL-TIME COUNTDOWN TIMER -->
-                    <div class="pt-6">
-                        <p class="text-[11px] font-bold text-sunda-primary uppercase tracking-widest mb-3">Menghitung Hari Bahagia</p>
-                        <div class="grid grid-cols-4 gap-2 text-center max-w-xs mx-auto">
-                            <div class="glass-card p-3 rounded-2xl border border-sunda-borderPink">
-                                <span id="cdDays" class="block font-bold text-2xl text-sunda-primary">00</span>
-                                <span class="text-[9px] uppercase text-sunda-muted font-bold">Hari</span>
-                            </div>
-                            <div class="glass-card p-3 rounded-2xl border border-sunda-borderPink">
-                                <span id="cdHours" class="block font-bold text-2xl text-sunda-primary">00</span>
-                                <span class="text-[9px] uppercase text-sunda-muted font-bold">Jam</span>
-                            </div>
-                            <div class="glass-card p-3 rounded-2xl border border-sunda-borderPink">
-                                <span id="cdMins" class="block font-bold text-2xl text-sunda-primary">00</span>
-                                <span class="text-[9px] uppercase text-sunda-muted font-bold">Menit</span>
-                            </div>
-                            <div class="glass-card p-3 rounded-2xl border border-sunda-borderPink">
-                                <span id="cdSecs" class="block font-bold text-2xl text-sunda-primary">00</span>
-                                <span class="text-[9px] uppercase text-sunda-muted font-bold">Detik</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Scroll Down Hint -->
-                <a href="#ayat" class="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-sunda-primary text-xs flex flex-col items-center opacity-70 hover:opacity-100 transition-opacity">
-                    <span class="text-[9px] uppercase tracking-wider mb-1">Gulir Ke Bawah</span>
-                    <i class="fa-solid fa-chevron-down animate-bounce"></i>
-                </a>
-            </section>
-
-            <!-- ==================== 4. QURANIC VERSE & KIDUNG SUNDA ==================== -->
-            <section id="ayat" class="py-12 px-6 bg-white text-center relative">
-                <div class="glass-card p-6 rounded-3xl border border-sunda-borderPink shadow-sm space-y-4">
-                    <div class="w-10 h-10 mx-auto rounded-full bg-sunda-softPink text-sunda-primary flex items-center justify-center">
-                        <i class="fa-solid fa-heart text-base"></i>
-                    </div>
-
-                    <p class="font-serif text-xl leading-loose text-sunda-dark tracking-wide dir-rtl font-semibold">
-                        وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً
-                    </p>
-                    
-                    <p class="text-xs text-sunda-dark leading-relaxed font-sans italic">
-                        "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang."
-                    </p>
-                    <span class="block text-xs font-bold text-sunda-primary uppercase tracking-wider">— QS. Ar-Rum: 21</span>
-
-                    <hr class="border-sunda-borderPink/50 my-4">
-
-                    <!-- Traditional Sundanese Wedding Wish -->
-                    <div class="bg-sunda-softPink/40 p-4 rounded-2xl border border-sunda-borderPink/30">
-                        <p class="text-xs text-sunda-muted font-serif italic">
-                            "Sareundeuk saigel, sabobot sapihanean, ka cai jadi saleuwi, ka darat jadi salebak."
-                        </p>
-                        <p class="text-[10px] text-sunda-primary font-bold mt-1">
-                            (Seia sekata, saling melengkapi, bersama menuju rumah tangga yang barokah)
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ==================== 5. MEMPELAI (THE COUPLE) ==================== -->
-            <section id="mempelai" class="py-12 px-6 bg-sunda-bg text-center space-y-8">
-                <div>
-                    <span class="text-[10px] uppercase tracking-widest text-sunda-roseGold font-bold">Mempelai Pria & Wanita</span>
-                    <h2 class="font-serif text-3xl font-bold text-sunda-primary mt-1">Pasangan Pengantin</h2>
-                    <p class="text-xs text-sunda-muted mt-1">Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan pernikahan anak-anak kami:</p>
-                </div>
-
-                <!-- GROOM CARD -->
-                <div class="glass-card p-6 rounded-3xl border border-sunda-borderPink shadow-md flex flex-col items-center space-y-4">
-                    <div class="relative w-36 h-36 rounded-full p-1.5 bg-gradient-to-r from-sunda-roseGold to-sunda-primary shadow-lg">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80" alt="Deni Ramdani" class="w-full h-full object-cover rounded-full border-2 border-white">
-                        <div class="absolute bottom-1 right-1 w-8 h-8 rounded-full bg-sunda-primary text-white flex items-center justify-center text-xs shadow-md">
-                            <i class="fa-solid fa-mars"></i>
-                        </div>
+            <div class="mt-16 md:mt-24 w-full max-w-xs md:max-w-md">
+                <p class="text-[9px] md:text-[10px] uppercase tracking-[0.35em] text-muted mb-5 md:mb-6">Menghitung Hari</p>
+                <div class="grid grid-cols-4 gap-2 md:gap-4 text-center">
+                    <div>
+                        <span id="cdDays" class="block font-serif text-3xl md:text-5xl text-ink leading-none">00</span>
+                        <span class="block text-[8px] md:text-[9px] uppercase tracking-[0.25em] text-muted mt-2 md:mt-3">Hari</span>
                     </div>
                     <div>
-                        <h3 class="font-serif text-2xl font-bold text-sunda-dark">Deni Ramdani, S.T.</h3>
-                        <p class="text-xs text-sunda-primary font-bold mt-0.5">Mempelai Pria (AA Deni)</p>
-                        <p class="text-xs text-sunda-muted mt-3 leading-relaxed">
-                            Putra Pertama dari <br>
-                            <span class="font-semibold text-sunda-dark">Bapak H. Dadang Kurnia</span> <br>& <span class="font-semibold text-sunda-dark">Ibu Hj. Nining Ratningsih</span>
-                        </p>
-                    </div>
-                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-sunda-softPink text-sunda-primary text-xs font-semibold hover:bg-sunda-primary hover:text-white transition-colors">
-                        <i class="fa-brands fa-instagram"></i>
-                        <span>@deni_ramdani</span>
-                    </a>
-                </div>
-
-                <!-- AMPERSAND SEPARATOR -->
-                <div class="font-cursive text-5xl text-sunda-primary my-2">&</div>
-
-                <!-- BRIDE CARD -->
-                <div class="glass-card p-6 rounded-3xl border border-sunda-borderPink shadow-md flex flex-col items-center space-y-4">
-                    <div class="relative w-36 h-36 rounded-full p-1.5 bg-gradient-to-r from-sunda-primary to-sunda-roseGold shadow-lg">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80" alt="Novi Nuraini" class="w-full h-full object-cover rounded-full border-2 border-white">
-                        <div class="absolute bottom-1 right-1 w-8 h-8 rounded-full bg-sunda-primary text-white flex items-center justify-center text-xs shadow-md">
-                            <i class="fa-solid fa-venus"></i>
-                        </div>
+                        <span id="cdHours" class="block font-serif text-3xl md:text-5xl text-ink leading-none">00</span>
+                        <span class="block text-[8px] md:text-[9px] uppercase tracking-[0.25em] text-muted mt-2 md:mt-3">Jam</span>
                     </div>
                     <div>
-                        <h3 class="font-serif text-2xl font-bold text-sunda-dark">Novi Nuraini, S.Pd.</h3>
-                        <p class="text-xs text-sunda-primary font-bold mt-0.5">Mempelai Wanita (Teteh Novi)</p>
-                        <p class="text-xs text-sunda-muted mt-3 leading-relaxed">
-                            Putri Kedua dari <br>
-                            <span class="font-semibold text-sunda-dark">Bapak Drs. Asep Suherman</span> <br>& <span class="font-semibold text-sunda-dark">Ibu Hj. Euis Komariah</span>
-                        </p>
+                        <span id="cdMins" class="block font-serif text-3xl md:text-5xl text-ink leading-none">00</span>
+                        <span class="block text-[8px] md:text-[9px] uppercase tracking-[0.25em] text-muted mt-2 md:mt-3">Menit</span>
                     </div>
-                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-sunda-softPink text-sunda-primary text-xs font-semibold hover:bg-sunda-primary hover:text-white transition-colors">
-                        <i class="fa-brands fa-instagram"></i>
-                        <span>@novi_nuraini</span>
-                    </a>
-                </div>
-            </section>
-
-            <!-- ==================== 6. EVENT DETAILS (AKAD & RESEPSI) ==================== -->
-            <section id="acara" class="py-12 px-6 bg-white text-center space-y-6">
-                <div>
-                    <span class="text-[10px] uppercase tracking-widest text-sunda-roseGold font-bold">Rangkaian Acara</span>
-                    <h2 class="font-serif text-3xl font-bold text-sunda-primary mt-1">Waktu & Lokasi</h2>
-                    <p class="text-xs text-sunda-muted mt-1">Insya Allah rangkaian acara pernikahan kami akan diselenggarakan pada:</p>
-                </div>
-
-                <!-- AKAD NIKAH CARD -->
-                <div class="bg-gradient-to-b from-sunda-softPink/50 to-white p-6 rounded-3xl border border-sunda-borderPink shadow-sm text-center space-y-3 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 bg-sunda-roseGold text-white text-[9px] font-bold px-3 py-1 rounded-bl-xl uppercase tracking-wider">
-                        Akad Nikah
-                    </div>
-                    <div class="w-10 h-10 mx-auto rounded-full bg-sunda-primary text-white flex items-center justify-center">
-                        <i class="fa-solid fa-ring"></i>
-                    </div>
-                    <h3 class="font-serif text-xl font-bold text-sunda-dark">Akad Nikah</h3>
-                    <p class="text-xs text-sunda-primary font-bold">Sabtu, 28 November 2026</p>
-                    <p class="text-xs text-sunda-muted"><i class="fa-regular fa-clock mr-1"></i> 08.00 - 10.00 WIB</p>
-                    <p class="text-xs text-sunda-dark font-medium leading-relaxed pt-2">
-                        <strong>Gedung Olahraga & Serbaguna Parahyangan</strong><br>
-                        Jl. Raya Pajajaran No. 88, Bandung, Jawa Barat
-                    </p>
-                </div>
-
-                <!-- RESEPSI CARD -->
-                <div class="bg-gradient-to-b from-sunda-softPink/50 to-white p-6 rounded-3xl border border-sunda-borderPink shadow-sm text-center space-y-3 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 bg-sunda-primary text-white text-[9px] font-bold px-3 py-1 rounded-bl-xl uppercase tracking-wider">
-                        Resepsi (Adat Sunda)
-                    </div>
-                    <div class="w-10 h-10 mx-auto rounded-full bg-sunda-primary text-white flex items-center justify-center">
-                        <i class="fa-solid fa-champagne-glasses"></i>
-                    </div>
-                    <h3 class="font-serif text-xl font-bold text-sunda-dark">Resepsi Pernikahan</h3>
-                    <p class="text-xs text-sunda-primary font-bold">Sabtu, 28 November 2026</p>
-                    <p class="text-xs text-sunda-muted"><i class="fa-regular fa-clock mr-1"></i> 11.00 - 16.00 WIB</p>
-                    <p class="text-xs text-sunda-dark font-medium leading-relaxed pt-2">
-                        <strong>Gedung Olahraga & Serbaguna Parahyangan</strong><br>
-                        Jl. Raya Pajajaran No. 88, Bandung, Jawa Barat
-                    </p>
-                </div>
-
-                <!-- LOCATION & CALENDAR BUTTONS -->
-                <div class="pt-2 space-y-3">
-                    <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-4 bg-sunda-primary text-white rounded-2xl font-semibold shadow-md hover:bg-sunda-primaryHover flex items-center justify-center space-x-2 text-xs transition">
-                        <i class="fa-solid fa-map-location-dot"></i>
-                        <span>Buka Petunjuk Lokasi (Google Maps)</span>
-                    </a>
-                    
-                    <button onclick="addToCalendar()" class="w-full py-3.5 px-4 bg-white border border-sunda-primary text-sunda-primary rounded-2xl font-semibold shadow-sm hover:bg-sunda-softPink flex items-center justify-center space-x-2 text-xs transition">
-                        <i class="fa-regular fa-calendar-plus"></i>
-                        <span>Simpan Ke Google Calendar</span>
-                    </button>
-                </div>
-            </section>
-
-            <!-- ==================== 7. GALERI FOTO (PHOTO GALLERY & LIGHTBOX) ==================== -->
-            <section id="galeri" class="py-12 px-6 bg-sunda-bg space-y-6 text-center">
-                <div>
-                    <span class="text-[10px] uppercase tracking-widest text-sunda-roseGold font-bold">Momen Bahagia</span>
-                    <h2 class="font-serif text-3xl font-bold text-sunda-primary mt-1">Galeri Foto</h2>
-                    <p class="text-xs text-sunda-muted mt-1">Klik gambar untuk memperbesar</p>
-                </div>
-
-                <div class="grid grid-cols-2 gap-3">
-                    <div onclick="openLightbox('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80')" class="cursor-pointer overflow-hidden rounded-2xl border border-sunda-borderPink shadow-sm hover:opacity-90 transition">
-                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=500&q=80" alt="Galeri 1" class="w-full h-40 object-cover transform hover:scale-110 transition duration-500">
-                    </div>
-                    <div onclick="openLightbox('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=80')" class="cursor-pointer overflow-hidden rounded-2xl border border-sunda-borderPink shadow-sm hover:opacity-90 transition">
-                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=500&q=80" alt="Galeri 2" class="w-full h-40 object-cover transform hover:scale-110 transition duration-500">
-                    </div>
-                    <div onclick="openLightbox('https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=900&q=80')" class="cursor-pointer overflow-hidden rounded-2xl border border-sunda-borderPink shadow-sm hover:opacity-90 transition">
-                        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=500&q=80" alt="Galeri 3" class="w-full h-40 object-cover transform hover:scale-110 transition duration-500">
-                    </div>
-                    <div onclick="openLightbox('https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=900&q=80')" class="cursor-pointer overflow-hidden rounded-2xl border border-sunda-borderPink shadow-sm hover:opacity-90 transition">
-                        <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=500&q=80" alt="Galeri 4" class="w-full h-40 object-cover transform hover:scale-110 transition duration-500">
+                    <div>
+                        <span id="cdSecs" class="block font-serif text-3xl md:text-5xl text-ink leading-none">00</span>
+                        <span class="block text-[8px] md:text-[9px] uppercase tracking-[0.25em] text-muted mt-2 md:mt-3">Detik</span>
                     </div>
                 </div>
-            </section>
-
-            <!-- LIGHTBOX MODAL -->
-            <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/90 hidden flex items-center justify-center p-4">
-                <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white text-2xl w-10 h-10 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/40">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-                <img id="lightboxImg" src="" alt="Enlarged preview" class="max-w-full max-h-[85vh] rounded-xl shadow-2xl object-contain">
             </div>
 
-            <!-- ==================== 8. DIGITAL GIFT / AMPLOP DIGITAL ==================== -->
-            <section id="hadiah" class="py-12 px-6 bg-white text-center space-y-6">
-                <div>
-                    <span class="text-[10px] uppercase tracking-widest text-sunda-roseGold font-bold">Tanda Kasih</span>
-                    <h2 class="font-serif text-3xl font-bold text-sunda-primary mt-1">Amplop Digital</h2>
-                    <p class="text-xs text-sunda-muted mt-1 leading-relaxed">
-                        Doa restu Anda merupakan karunia terindah bagi kami. Namun jika hendak memberi tanda kasih, dapat melalui rekening berikut:
+            <a href="#ayat" class="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted hover:text-rose transition-colors">
+                <span class="text-[8px] md:text-[9px] uppercase tracking-[0.35em]">Gulir</span>
+                <i class="fa-solid fa-arrow-down text-[10px]"></i>
+            </a>
+        </section>
+
+        <!-- ─────────────── VERSE ─────────────── -->
+        <section id="ayat" class="py-24 md:py-32 px-6 bg-cream">
+            <div class="max-w-md md:max-w-2xl mx-auto text-center space-y-6 md:space-y-8">
+
+                <p class="font-serif text-xl md:text-2xl lg:text-3xl leading-[2] text-ink" dir="rtl">
+                    وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً
+                </p>
+
+                <p class="text-[13px] md:text-[15px] text-muted leading-relaxed md:leading-loose">
+                    &ldquo;Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang.&rdquo;
+                </p>
+
+                <p class="text-[10px] md:text-[11px] uppercase tracking-[0.35em] text-rose">QS. Ar-Rum : 21</p>
+
+                <div class="pt-10 md:pt-14 mt-8 md:mt-10 border-t border-line max-w-md mx-auto">
+                    <p class="text-[13px] md:text-[15px] text-muted italic leading-relaxed font-serif">
+                        &ldquo;Sareundeuk saigel, sabobot sapihanean,<br class="hidden md:inline">ka cai jadi saleuwi, ka darat jadi salebak.&rdquo;
+                    </p>
+                    <p class="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-muted mt-4">
+                        Seia sekata, saling melengkapi
                     </p>
                 </div>
+            </div>
+        </section>
 
-                <!-- BANK BCA -->
-                <div class="glass-card p-5 rounded-3xl border border-sunda-borderPink text-left relative space-y-2">
-                    <div class="flex justify-between items-center">
-                        <span class="font-bold text-lg text-blue-900 tracking-wider">BCA</span>
-                        <i class="fa-solid fa-credit-card text-sunda-primary"></i>
-                    </div>
-                    <div>
-                        <p class="text-xs text-sunda-muted">No. Rekening:</p>
-                        <p id="rekeingBCA" class="font-mono text-base font-bold text-sunda-dark">8290123456</p>
-                        <p class="text-xs text-sunda-muted mt-0.5">a.n. Deni Ramdani</p>
-                    </div>
-                    <button onclick="copyToClipboard('8290123456', 'Rekening BCA Deni')" class="w-full py-2.5 px-3 bg-sunda-softPink hover:bg-sunda-primary hover:text-white text-sunda-primary text-xs font-bold rounded-xl transition flex items-center justify-center space-x-1.5">
-                        <i class="fa-regular fa-copy"></i>
-                        <span>Salin No. Rekening</span>
-                    </button>
+        <!-- ─────────────── COUPLE ─────────────── -->
+        <section id="mempelai" class="py-24 md:py-32 px-6 bg-paper">
+            <div class="max-w-md md:max-w-4xl lg:max-w-5xl mx-auto">
+
+                <div class="text-center mb-16 md:mb-20">
+                    <p class="text-[10px] md:text-[11px] uppercase tracking-[0.4em] text-muted">Mempelai</p>
+                    <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl text-ink mt-2 md:mt-3">Pasangan Pengantin</h2>
                 </div>
 
-                <!-- BANK MANDIRI -->
-                <div class="glass-card p-5 rounded-3xl border border-sunda-borderPink text-left relative space-y-2">
-                    <div class="flex justify-between items-center">
-                        <span class="font-bold text-lg text-blue-700 tracking-wider">MANDIRI</span>
-                        <i class="fa-solid fa-building-columns text-sunda-primary"></i>
-                    </div>
-                    <div>
-                        <p class="text-xs text-sunda-muted">No. Rekening:</p>
-                        <p id="rekeingMandiri" class="font-mono text-base font-bold text-sunda-dark">1310009876543</p>
-                        <p class="text-xs text-sunda-muted mt-0.5">a.n. Novi Nuraini</p>
-                    </div>
-                    <button onclick="copyToClipboard('1310009876543', 'Rekening Mandiri Novi')" class="w-full py-2.5 px-3 bg-sunda-softPink hover:bg-sunda-primary hover:text-white text-sunda-primary text-xs font-bold rounded-xl transition flex items-center justify-center space-x-1.5">
-                        <i class="fa-regular fa-copy"></i>
-                        <span>Salin No. Rekening</span>
-                    </button>
-                </div>
-            </section>
+                <div class="grid md:grid-cols-2 gap-16 md:gap-12 lg:gap-20">
 
-            <!-- ==================== 9. BUKU TAMU & RSVP ==================== -->
-            <section id="rsvp" class="py-12 px-6 bg-sunda-bg space-y-6">
-                <div class="text-center">
-                    <span class="text-[10px] uppercase tracking-widest text-sunda-roseGold font-bold">Konfirmasi & Doa</span>
-                    <h2 class="font-serif text-3xl font-bold text-sunda-primary mt-1">Buku Tamu & Ucapan</h2>
-                    <p class="text-xs text-sunda-muted mt-1">Berikan doa terbaik dan konfirmasi kehadiran Anda</p>
-                </div>
-
-                <!-- RSVP FORM CARD -->
-                <div class="glass-card p-5 rounded-3xl border border-sunda-borderPink shadow-sm">
-                    <form id="rsvpForm" onsubmit="handleRSVPSubmit(event)" class="space-y-4">
-                        <div>
-                            <label class="block text-xs font-bold text-sunda-dark mb-1">Nama Lengkap</label>
-                            <input type="text" id="inputName" required placeholder="Masukkan nama Anda" class="w-full px-3.5 py-2.5 rounded-xl border border-sunda-borderPink text-xs focus:outline-none focus:ring-2 focus:ring-sunda-primary bg-white/90">
+                    <div class="text-center space-y-5 md:space-y-6">
+                        <div class="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 mx-auto rounded-full overflow-hidden border border-line">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80" alt="Deni Ramdani" class="w-full h-full object-cover">
                         </div>
-
                         <div>
-                            <label class="block text-xs font-bold text-sunda-dark mb-1">Konfirmasi Kehadiran</label>
-                            <select id="inputAttendance" required class="w-full px-3.5 py-2.5 rounded-xl border border-sunda-borderPink text-xs focus:outline-none focus:ring-2 focus:ring-sunda-primary bg-white/90 text-sunda-dark">
-                                <option value="Hadir">Saya Akan Hadir</option>
-                                <option value="Tidak Hadir">Maaf, Tidak Bisa Hadir</option>
-                                <option value="Ragu-ragu">Masih Ragu-ragu</option>
+                            <h3 class="font-serif text-2xl md:text-3xl text-ink">Deni Ramdani</h3>
+                            <p class="text-[9px] md:text-[10px] uppercase tracking-[0.35em] text-rose mt-2">Mempelai Pria</p>
+                            <p class="text-[12px] md:text-[13px] text-muted mt-5 md:mt-6 leading-relaxed">
+                                Putra dari<br>
+                                <span class="text-ink">Bapak H. Dadang Kurnia</span><br>
+                                &amp; <span class="text-ink">Ibu Hj. Nining Ratningsih</span>
+                            </p>
+                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+                               class="inline-block mt-5 text-[10px] md:text-[11px] tracking-[0.2em] text-muted hover:text-rose transition-colors">
+                                <i class="fa-brands fa-instagram mr-1.5 text-[9px]"></i>@deni_ramdani
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="text-center space-y-5 md:space-y-6">
+                        <div class="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 mx-auto rounded-full overflow-hidden border border-line">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80" alt="Novi Nuraini" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h3 class="font-serif text-2xl md:text-3xl text-ink">Novi Nuraini</h3>
+                            <p class="text-[9px] md:text-[10px] uppercase tracking-[0.35em] text-rose mt-2">Mempelai Wanita</p>
+                            <p class="text-[12px] md:text-[13px] text-muted mt-5 md:mt-6 leading-relaxed">
+                                Putri dari<br>
+                                <span class="text-ink">Bapak Drs. Asep Suherman</span><br>
+                                &amp; <span class="text-ink">Ibu Hj. Euis Komariah</span>
+                            </p>
+                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+                               class="inline-block mt-5 text-[10px] md:text-[11px] tracking-[0.2em] text-muted hover:text-rose transition-colors">
+                                <i class="fa-brands fa-instagram mr-1.5 text-[9px]"></i>@novi_nuraini
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ─────────────── EVENTS ─────────────── -->
+        <section id="acara" class="py-24 md:py-32 px-6 bg-cream">
+            <div class="max-w-md md:max-w-4xl lg:max-w-5xl mx-auto">
+
+                <div class="text-center mb-16 md:mb-20">
+                    <p class="text-[10px] md:text-[11px] uppercase tracking-[0.4em] text-muted">Rangkaian Acara</p>
+                    <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl text-ink mt-2 md:mt-3">Waktu &amp; Tempat</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 md:gap-10 lg:gap-16 text-center">
+
+                    <div>
+                        <p class="text-[9px] md:text-[10px] uppercase tracking-[0.35em] text-rose mb-3 md:mb-4">Akad Nikah</p>
+                        <p class="font-serif text-xl md:text-2xl text-ink">Sabtu, 28 November 2026</p>
+                        <p class="text-[11px] md:text-[12px] text-muted mt-2">08.00 — 10.00 WIB</p>
+                        <p class="text-[12px] md:text-[13px] text-ink mt-4 md:mt-5 leading-relaxed">
+                            <strong class="font-medium">Gedung Parahyangan</strong><br>
+                            Jl. Raya Pajajaran No. 88<br>
+                            Bandung, Jawa Barat
+                        </p>
+                    </div>
+
+                    <div class="md:border-l md:border-line md:pl-10 lg:pl-16">
+                        <p class="text-[9px] md:text-[10px] uppercase tracking-[0.35em] text-rose mb-3 md:mb-4">Resepsi</p>
+                        <p class="font-serif text-xl md:text-2xl text-ink">Sabtu, 28 November 2026</p>
+                        <p class="text-[11px] md:text-[12px] text-muted mt-2">11.00 — 16.00 WIB</p>
+                        <p class="text-[12px] md:text-[13px] text-ink mt-4 md:mt-5 leading-relaxed">
+                            <strong class="font-medium">Gedung Parahyangan</strong><br>
+                            Jl. Raya Pajajaran No. 88<br>
+                            Bandung, Jawa Barat
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="mt-14 md:mt-16 grid md:grid-cols-2 gap-3 md:gap-4 max-w-md md:max-w-xl mx-auto">
+                    <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer"
+                       class="block w-full py-3.5 text-center border border-rose/50 text-rose text-[10px] md:text-[11px] uppercase tracking-[0.3em] hover:bg-rose hover:text-paper transition-colors duration-400">
+                        Lihat Lokasi
+                    </a>
+                    <button onclick="addToCalendar()"
+                            class="block w-full py-3.5 text-center border border-rose/50 text-rose text-[10px] md:text-[11px] uppercase tracking-[0.3em] hover:bg-rose hover:text-paper transition-colors duration-400">
+                        Simpan ke Kalender
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─────────────── GALLERY ─────────────── -->
+        <section id="galeri" class="py-24 md:py-32 px-6 bg-paper">
+            <div class="max-w-md md:max-w-4xl lg:max-w-6xl mx-auto">
+
+                <div class="text-center mb-14 md:mb-16">
+                    <p class="text-[10px] md:text-[11px] uppercase tracking-[0.4em] text-muted">Galeri</p>
+                    <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl text-ink mt-2 md:mt-3">Momen</h2>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1.5 md:gap-2 lg:gap-3">
+                    <div onclick="openLightbox('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=85')"
+                         class="aspect-[3/4] overflow-hidden cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80"
+                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div onclick="openLightbox('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1600&q=85')"
+                         class="aspect-[3/4] overflow-hidden cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80"
+                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div onclick="openLightbox('https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1600&q=85')"
+                         class="aspect-[3/4] overflow-hidden cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80"
+                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div onclick="openLightbox('https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1600&q=85')"
+                         class="aspect-[3/4] overflow-hidden cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=600&q=80"
+                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIGHTBOX -->
+        <div id="lightboxModal" class="fixed inset-0 z-50 bg-ink/95 hidden items-center justify-center p-6">
+            <button onclick="closeLightbox()" class="absolute top-6 right-6 text-paper/80 hover:text-paper text-xl w-10 h-10 flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <img id="lightboxImg" src="" alt="" class="max-w-full max-h-[85vh] object-contain">
+        </div>
+
+        <!-- ─────────────── GIFT ─────────────── -->
+        <section id="hadiah" class="py-24 md:py-32 px-6 bg-cream">
+            <div class="max-w-md md:max-w-3xl mx-auto text-center">
+
+                <p class="text-[10px] md:text-[11px] uppercase tracking-[0.4em] text-muted">Tanda Kasih</p>
+                <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl text-ink mt-2 md:mt-3">Amplop Digital</h2>
+                <p class="text-[12px] md:text-[13px] text-muted mt-4 md:mt-5 leading-relaxed max-w-md mx-auto">
+                    Doa restu Anda merupakan karunia terindah bagi kami. Jika berkenan memberi tanda kasih, dapat melalui:
+                </p>
+
+                <div class="mt-10 md:mt-14 grid md:grid-cols-2 gap-4 md:gap-6 text-left">
+                    <div class="border border-line p-6 md:p-7 bg-paper">
+                        <p class="text-[9px] md:text-[10px] uppercase tracking-[0.35em] text-muted mb-3">Bank BCA</p>
+                        <p class="font-serif text-xl md:text-2xl text-ink tracking-wide">8290 1234 56</p>
+                        <p class="text-[11px] md:text-[12px] text-muted mt-2">a.n. Deni Ramdani</p>
+                        <button onclick="copyToClipboard('8290123456', 'BCA')"
+                                class="mt-5 text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-rose hover:text-rose-deep transition-colors">
+                            Salin Nomor →
+                        </button>
+                    </div>
+
+                    <div class="border border-line p-6 md:p-7 bg-paper">
+                        <p class="text-[9px] md:text-[10px] uppercase tracking-[0.35em] text-muted mb-3">Bank Mandiri</p>
+                        <p class="font-serif text-xl md:text-2xl text-ink tracking-wide">1310 0098 7654 3</p>
+                        <p class="text-[11px] md:text-[12px] text-muted mt-2">a.n. Novi Nuraini</p>
+                        <button onclick="copyToClipboard('1310009876543', 'Mandiri')"
+                                class="mt-5 text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-rose hover:text-rose-deep transition-colors">
+                            Salin Nomor →
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─────────────── RSVP ─────────────── -->
+        <section id="rsvp" class="py-24 md:py-32 px-6 bg-paper">
+            <div class="max-w-md md:max-w-4xl lg:max-w-5xl mx-auto">
+
+                <div class="text-center mb-14 md:mb-16">
+                    <p class="text-[10px] md:text-[11px] uppercase tracking-[0.4em] text-muted">Konfirmasi</p>
+                    <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl text-ink mt-2 md:mt-3">Buku Tamu</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-14 md:gap-10 lg:gap-16">
+
+                    <form id="rsvpForm" onsubmit="handleRSVPSubmit(event)" class="space-y-6 md:space-y-7">
+                        <div>
+                            <label class="block text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-muted mb-2">Nama</label>
+                            <input type="text" id="inputName" required placeholder="Nama lengkap"
+                                   class="w-full px-0 py-2.5 bg-transparent border-0 border-b border-line text-sm md:text-base text-ink placeholder:text-muted/50">
+                        </div>
+                        <div>
+                            <label class="block text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-muted mb-2">Kehadiran</label>
+                            <select id="inputAttendance" required
+                                    class="w-full px-0 py-2.5 bg-transparent border-0 border-b border-line text-sm md:text-base text-ink appearance-none">
+                                <option value="Hadir">Saya akan hadir</option>
+                                <option value="Tidak Hadir">Maaf, tidak bisa hadir</option>
+                                <option value="Ragu-ragu">Masih ragu-ragu</option>
                             </select>
                         </div>
-
                         <div>
-                            <label class="block text-xs font-bold text-sunda-dark mb-1">Pesan & Doa Restu</label>
-                            <textarea id="inputWish" rows="3" required placeholder="Tuliskan harapan dan doa untuk kedua mempelai..." class="w-full px-3.5 py-2.5 rounded-xl border border-sunda-borderPink text-xs focus:outline-none focus:ring-2 focus:ring-sunda-primary bg-white/90"></textarea>
+                            <label class="block text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-muted mb-2">Doa &amp; Ucapan</label>
+                            <textarea id="inputWish" rows="4" required placeholder="Tuliskan doa untuk kedua mempelai..."
+                                      class="w-full px-0 py-2.5 bg-transparent border-0 border-b border-line text-sm md:text-base text-ink placeholder:text-muted/50 resize-none"></textarea>
                         </div>
-
-                        <button type="submit" class="w-full py-3 bg-sunda-primary text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-sunda-primaryHover transition shadow-md">
-                            Kirim Ucapan & Konfirmasi
+                        <button type="submit"
+                                class="w-full py-3.5 md:py-4 bg-rose text-paper text-[10px] md:text-[11px] uppercase tracking-[0.35em] hover:bg-rose-deep transition-colors duration-400">
+                            Kirim Ucapan
                         </button>
                     </form>
-                </div>
 
-                <!-- LIVE GUESTBOOK FEED -->
-                <div class="space-y-3 pt-2">
-                    <h3 class="text-xs font-bold text-sunda-dark flex items-center justify-between">
-                        <span>Ucapan Sahabat & Keluarga</span>
-                        <span id="wishCountBadge" class="text-[10px] px-2 py-0.5 rounded-full bg-sunda-primary text-white font-medium">0 Ucapan</span>
-                    </h3>
-
-                    <div id="wishFeedList" class="space-y-3 max-h-80 overflow-y-auto pr-1">
-                        <!-- Dynamically generated wishes -->
+                    <div>
+                        <div class="flex items-baseline justify-between mb-4 pb-3 border-b border-line">
+                            <h3 class="text-[10px] md:text-[11px] uppercase tracking-[0.3em] text-muted">Ucapan Terbaru</h3>
+                            <span id="wishCountBadge" class="text-[9px] md:text-[10px] tracking-wider text-muted">0</span>
+                        </div>
+                        <div id="wishFeedList" class="max-h-[480px] overflow-y-auto -mr-2 pr-2"></div>
                     </div>
-                </div>
-            </section>
 
-            <!-- ==================== 10. CLOSING FOOTER ==================== -->
-            <footer class="py-12 px-6 bg-gradient-to-t from-sunda-softPink via-white to-sunda-bg text-center space-y-4">
-                <svg class="w-16 h-8 text-sunda-primary mx-auto opacity-70" viewBox="0 0 100 40" fill="currentColor">
-                    <path d="M50 0 C40 12 30 15 10 10 C20 25 35 30 50 40 C65 30 80 25 90 10 C70 15 60 12 50 0 Z"/>
-                </svg>
-                <p class="text-xs text-sunda-muted leading-relaxed max-w-xs mx-auto">
-                    Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.
-                </p>
-                <p class="font-cursive text-3xl text-sunda-primary">Hatur Nuhun Pisan</p>
-                <p class="text-xs font-bold text-sunda-dark">Deni & Novi</p>
-                <div class="text-[10px] text-sunda-muted pt-4 border-t border-sunda-borderPink/40">
-                    &copy; 2026 Deni & Novi Wedding. Sundanese Floral Edition.
                 </div>
-            </footer>
-
-            <!-- FLOATING TOAST NOTIFICATION -->
-            <div id="toastNotification" class="fixed bottom-20 left-1/2 transform -translate-x-1/2 bg-sunda-dark text-white text-xs px-4 py-2.5 rounded-xl shadow-2xl opacity-0 pointer-events-none transition-all duration-300 z-50 flex items-center space-x-2">
-                <i id="toastIcon" class="fa-solid fa-circle-check text-green-400"></i>
-                <span id="toastMsg">Notifikasi</span>
             </div>
+        </section>
 
-            <!-- MOBILE NAVIGATION BAR -->
-            <nav id="bottomNav" class="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-md bg-white/95 backdrop-blur-md border-t border-sunda-borderPink/60 py-2 px-4 flex justify-around items-center z-40 text-sunda-muted text-center shadow-lg">
-                <a href="#hero" class="flex flex-col items-center hover:text-sunda-primary transition">
-                    <i class="fa-solid fa-house text-xs"></i>
-                    <span class="text-[9px] mt-0.5">Beranda</span>
-                </a>
-                <a href="#mempelai" class="flex flex-col items-center hover:text-sunda-primary transition">
-                    <i class="fa-solid fa-heart text-xs"></i>
-                    <span class="text-[9px] mt-0.5">Mempelai</span>
-                </a>
-                <a href="#acara" class="flex flex-col items-center hover:text-sunda-primary transition">
-                    <i class="fa-solid fa-calendar-check text-xs"></i>
-                    <span class="text-[9px] mt-0.5">Acara</span>
-                </a>
-                <a href="#galeri" class="flex flex-col items-center hover:text-sunda-primary transition">
-                    <i class="fa-solid fa-images text-xs"></i>
-                    <span class="text-[9px] mt-0.5">Galeri</span>
-                </a>
-                <a href="#rsvp" class="flex flex-col items-center hover:text-sunda-primary transition">
-                    <i class="fa-solid fa-pen-to-square text-xs"></i>
-                    <span class="text-[9px] mt-0.5">RSVP</span>
-                </a>
-            </nav>
+        <!-- ─────────────── FOOTER ─────────────── -->
+        <footer class="py-16 md:py-24 px-6 bg-cream text-center">
+            <p class="text-[12px] md:text-[14px] text-muted max-w-md mx-auto leading-relaxed">
+                Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.
+            </p>
+            <p class="font-serif italic text-2xl md:text-4xl text-ink mt-8 md:mt-10">Hatur Nuhun</p>
+            <p class="text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-muted mt-3 md:mt-4">Deni &amp; Novi</p>
 
-        </div>
+            <div class="mt-12 md:mt-16 pt-6 md:pt-8 border-t border-line max-w-md mx-auto">
+                <p class="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-muted/70">
+                    &copy; 2026 — Made with care
+                </p>
+            </div>
+        </footer>
     </div>
 
-    <!-- ==================== JAVASCRIPT LOGIC ==================== -->
-    <script>
-        // --- 1. FALLING PETALS CANVAS ANIMATION SYSTEM ---
-        const canvas = document.getElementById('petalCanvas');
-        const ctx = canvas.getContext('2d');
+    <!-- Toast -->
+    <div id="toastNotification"
+         class="fixed bottom-28 md:bottom-24 left-1/2 -translate-x-1/2 bg-ink text-paper text-[10px] md:text-[11px] uppercase tracking-[0.2em] px-4 py-3 opacity-0 pointer-events-none transition-all duration-300 z-50 flex items-center gap-2 whitespace-nowrap rounded-full">
+        <i id="toastIcon" class="fa-solid fa-check text-[9px] text-blush"></i>
+        <span id="toastMsg">Notifikasi</span>
+    </div>
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
+    <!-- Bottom Nav -->
+    <nav id="bottomNav"
+         class="fixed bottom-0 md:bottom-6 left-1/2 -translate-x-1/2 z-40 bg-paper/95 md:bg-paper backdrop-blur border-t md:border md:rounded-full border-line flex justify-around md:justify-center items-center gap-0 md:gap-1 w-full max-w-md md:max-w-fit py-2.5 md:py-2 md:px-4 md:shadow-xl">
+        <a href="#hero" class="flex flex-col md:flex-row items-center text-muted hover:text-rose md:px-3 md:py-2 md:rounded-full md:hover:bg-blush transition-colors gap-1 md:gap-2">
+            <i class="fa-solid fa-house text-[10px] md:text-xs"></i>
+            <span class="text-[8px] md:text-[10px] uppercase tracking-[0.1em] md:tracking-wider">Beranda</span>
+        </a>
+        <a href="#mempelai" class="flex flex-col md:flex-row items-center text-muted hover:text-rose md:px-3 md:py-2 md:rounded-full md:hover:bg-blush transition-colors gap-1 md:gap-2">
+            <i class="fa-regular fa-heart text-[10px] md:text-xs"></i>
+            <span class="text-[8px] md:text-[10px] uppercase tracking-[0.1em] md:tracking-wider">Mempelai</span>
+        </a>
+        <a href="#acara" class="flex flex-col md:flex-row items-center text-muted hover:text-rose md:px-3 md:py-2 md:rounded-full md:hover:bg-blush transition-colors gap-1 md:gap-2">
+            <i class="fa-regular fa-calendar text-[10px] md:text-xs"></i>
+            <span class="text-[8px] md:text-[10px] uppercase tracking-[0.1em] md:tracking-wider">Acara</span>
+        </a>
+        <a href="#galeri" class="flex flex-col md:flex-row items-center text-muted hover:text-rose md:px-3 md:py-2 md:rounded-full md:hover:bg-blush transition-colors gap-1 md:gap-2">
+            <i class="fa-regular fa-images text-[10px] md:text-xs"></i>
+            <span class="text-[8px] md:text-[10px] uppercase tracking-[0.1em] md:tracking-wider">Galeri</span>
+        </a>
+        <a href="#rsvp" class="flex flex-col md:flex-row items-center text-muted hover:text-rose md:px-3 md:py-2 md:rounded-full md:hover:bg-blush transition-colors gap-1 md:gap-2">
+            <i class="fa-regular fa-pen-to-square text-[10px] md:text-xs"></i>
+            <span class="text-[8px] md:text-[10px] uppercase tracking-[0.1em] md:tracking-wider">RSVP</span>
+        </a>
+    </nav>
 
-        class Petal {
-            constructor() {
-                this.reset();
-            }
-
-            reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = -20;
-                this.size = Math.random() * 8 + 6;
-                this.speedY = Math.random() * 1.5 + 0.8;
-                this.speedX = Math.random() * 1 - 0.5;
-                this.angle = Math.random() * 360;
-                this.spin = Math.random() * 2 - 1;
-                this.color = Math.random() > 0.3 ? '#F8BBD0' : '#FFFFFF';
-                this.opacity = Math.random() * 0.6 + 0.3;
-            }
-
-            update() {
-                this.y += this.speedY;
-                this.x += Math.sin(this.y * 0.02) + this.speedX;
-                this.angle += this.spin;
-
-                if (this.y > canvas.height + 20) {
-                    this.reset();
-                }
-            }
-
-            draw() {
-                ctx.save();
-                ctx.translate(this.x, this.y);
-                ctx.rotate((this.angle * Math.PI) / 180);
-                ctx.globalAlpha = this.opacity;
-                ctx.fillStyle = this.color;
-
-                ctx.beginPath();
-                ctx.moveTo(0, 0);
-                ctx.bezierCurveTo(-this.size, -this.size, -this.size, this.size, 0, this.size * 1.5);
-                ctx.bezierCurveTo(this.size, this.size, this.size, -this.size, 0, 0);
-                ctx.fill();
-
-                ctx.restore();
-            }
-        }
-
-        const petals = Array.from({ length: 30 }, () => new Petal());
-
-        function animatePetals() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            petals.forEach(p => {
-                p.update();
-                p.draw();
-            });
-            requestAnimationFrame(animatePetals);
-        }
-        animatePetals();
-
-
-        // --- 2. DYNAMIC URL PARAMETER READ (`?to=...`) ---
-        function getGuestNameFromURL() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const toParam = urlParams.get('to');
-            if (toParam && toParam.trim() !== "") {
-                return decodeURIComponent(toParam);
-            }
-            return "Sobat Math Angkatan 1"; // Default fallback
-        }
-
-        const guestName = getGuestNameFromURL();
-        document.getElementById('guestNameDisplay').textContent = guestName;
-        document.getElementById('inputName').value = guestName !== "Sobat Math Angkatan 1" ? guestName : "";
-
-
-        // --- 3. COVER ANIMATION & AUDIO CONTROL ---
-        let isAudioPlaying = false;
-        const bgAudio = document.getElementById('bgAudio');
-        const audioIcon = document.getElementById('audioIcon');
-        const audioContainer = document.getElementById('audioContainer');
-        const audioVisualizer = document.getElementById('audioVisualizer');
-
-        function openInvitation() {
-            const cover = document.getElementById('openingCover');
-            
-            // 1. Release strict scroll lock from body
-            document.body.classList.remove('lock-scroll');
-            
-            // 2. Smooth slide-up transition for the cover
-            cover.style.transition = 'transform 0.8s cubic-bezier(0.77, 0, 0.175, 1)';
-            cover.style.transform = 'translateY(-100%)';
-
-            // 3. Show audio control & play background music
-            audioContainer.classList.remove('hidden');
-            playAudio();
-            
-            // 4. Hide cover element after slide transition completes
-            setTimeout(() => {
-                cover.style.display = 'none';
-            }, 850);
-        }
-
-        function playAudio() {
-            bgAudio.play().then(() => {
-                isAudioPlaying = true;
-                audioIcon.classList.add('animate-spin-slow');
-                audioVisualizer.style.opacity = '1';
-            }).catch(err => {
-                console.log("Autoplay policy error:", err);
-            });
-        }
-
-        function toggleAudio() {
-            if (isAudioPlaying) {
-                bgAudio.pause();
-                isAudioPlaying = false;
-                audioIcon.classList.remove('animate-spin-slow');
-                audioVisualizer.style.opacity = '0.3';
-                showToast("Musik dihentikan", "fa-circle-pause");
-            } else {
-                bgAudio.play();
-                isAudioPlaying = true;
-                audioIcon.classList.add('animate-spin-slow');
-                audioVisualizer.style.opacity = '1';
-                showToast("Memutar musik latar", "fa-circle-play");
-            }
-        }
-
-
-        // --- 4. REALTIME COUNTDOWN TIMER ---
-        const targetDate = new Date("November 28, 2026 08:00:00").getTime();
-
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const difference = targetDate - now;
-
-            if (difference > 0) {
-                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-                document.getElementById('cdDays').textContent = days < 10 ? '0' + days : days;
-                document.getElementById('cdHours').textContent = hours < 10 ? '0' + hours : hours;
-                document.getElementById('cdMins').textContent = minutes < 10 ? '0' + minutes : minutes;
-                document.getElementById('cdSecs').textContent = seconds < 10 ? '0' + seconds : seconds;
-            } else {
-                document.getElementById('cdDays').textContent = '00';
-                document.getElementById('cdHours').textContent = '00';
-                document.getElementById('cdMins').textContent = '00';
-                document.getElementById('cdSecs').textContent = '00';
-            }
-        }
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-
-
-        // --- 5. LIGHTBOX GALERI ---
-        function openLightbox(imgUrl) {
-            const modal = document.getElementById('lightboxModal');
-            const img = document.getElementById('lightboxImg');
-            img.src = imgUrl;
-            modal.classList.remove('hidden');
-        }
-
-        function closeLightbox() {
-            document.getElementById('lightboxModal').classList.add('hidden');
-        }
-
-
-        // --- 6. CLIPBOARD COPY WITH FEEDBACK ---
-        function copyToClipboard(text, accountName) {
-            const tempInput = document.createElement('textarea');
-            tempInput.value = text;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            tempInput.setSelectionRange(0, 99999);
-
-            try {
-                document.execCommand('copy');
-                showToast(`Nomor ${accountName} berhasil disalin!`, 'fa-circle-check');
-            } catch (err) {
-                showToast('Gagal menyalin nomor rekening', 'fa-triangle-exclamation');
-            }
-            document.body.removeChild(tempInput);
-        }
-
-
-        // --- 7. TOAST NOTIFICATION SYSTEM ---
-        function showToast(message, iconClass = 'fa-circle-check') {
-            const toast = document.getElementById('toastNotification');
-            const toastMsg = document.getElementById('toastMsg');
-            const toastIcon = document.getElementById('toastIcon');
-
-            toastMsg.textContent = message;
-            toastIcon.className = `fa-solid ${iconClass} text-green-400`;
-
-            toast.classList.remove('opacity-0', 'pointer-events-none');
-            toast.classList.add('opacity-100');
-
-            setTimeout(() => {
-                toast.classList.remove('opacity-100');
-                toast.classList.add('opacity-0', 'pointer-events-none');
-            }, 3000);
-        }
-
-
-        // --- 8. GOOGLE CALENDAR INTEGRATION ---
-        function addToCalendar() {
-            const title = encodeURIComponent("Pernikahan Deni & Novi (Adat Sunda)");
-            const details = encodeURIComponent("Akad Nikah & Resepsi Pernikahan Deni Ramdani & Novi Nuraini");
-            const location = encodeURIComponent("Gedung Olahraga & Serbaguna Parahyangan, Jl. Raya Pajajaran No. 88, Bandung");
-            const startDate = "20261128T010000Z";
-            const endDate = "20261128T090000Z";
-
-            const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startDate}/${endDate}&details=${details}&location=${location}`;
-            window.open(calendarUrl, '_blank');
-        }
-
-
-        // --- 9. RSVP & LIVE WISH FEED ---
-        const initialWishes = [
-            {
-                name: "Sobat Math Angkatan 1",
-                attendance: "Hadir",
-                wish: "Wilujeng ngambah sagara rumah tangga kanggo AA Deni & Teteh Novi! Mugia janten kulawarga nu sakinah, mawaddah, wa rahmah. Aamiin yaa Robbal 'Aalamiin! 💐💐",
-                time: "Baru saja"
-            },
-            {
-                name: "Kang Cecep & Kel.",
-                attendance: "Hadir",
-                wish: "Wilujeng kasep sareng geulis! Mugia dipaparin kasehatan, kalancaran, sareng kabarokahan dina rumah tanggana.",
-                time: "2 jam lalu"
-            },
-            {
-                name: "Teh Rina Melati",
-                attendance: "Hadir",
-                wish: "Selamat ya Novi & Deni! Cantik banget undangannya. Semoga acaranya lancar sampai hari H dan bahagia selalu!",
-                time: "5 jam lalu"
-            }
-        ];
-
-        function loadWishes() {
-            const saved = localStorage.getItem('deni_novi_wishes_v2');
-            let wishes = initialWishes;
-            if (saved) {
-                try {
-                    wishes = JSON.parse(saved);
-                } catch(e) {
-                    wishes = initialWishes;
-                }
-            }
-            renderWishes(wishes);
-        }
-
-        function renderWishes(wishes) {
-            const feed = document.getElementById('wishFeedList');
-            document.getElementById('wishCountBadge').textContent = `${wishes.length} Ucapan`;
-            feed.innerHTML = '';
-
-            wishes.forEach(item => {
-                const card = document.createElement('div');
-                card.className = "bg-white p-3.5 rounded-2xl border border-sunda-borderPink/60 shadow-sm space-y-1.5 text-left";
-                
-                let badgeClass = "bg-green-100 text-green-700";
-                if (item.attendance === "Tidak Hadir") badgeClass = "bg-red-100 text-red-700";
-                if (item.attendance === "Ragu-ragu") badgeClass = "bg-amber-100 text-amber-700";
-
-                const initials = item.name.split(' ').map(n => n[0]).slice(0, 2).join('').toUpperCase();
-
-                card.innerHTML = `
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center space-x-2">
-                            <div class="w-7 h-7 rounded-full bg-sunda-softPink text-sunda-primary text-xs font-bold flex items-center justify-center border border-sunda-borderPink">
-                                ${initials}
-                            </div>
-                            <span class="font-bold text-xs text-sunda-dark truncate max-w-[150px]">${escapeHTML(item.name)}</span>
-                        </div>
-                        <span class="text-[9px] px-2 py-0.5 rounded-full font-semibold ${badgeClass}">
-                            ${escapeHTML(item.attendance)}
-                        </span>
-                    </div>
-                    <p class="text-xs text-sunda-dark leading-relaxed pl-9">${escapeHTML(item.wish)}</p>
-                    <p class="text-[9px] text-sunda-muted text-right italic">${item.time || 'Baru saja'}</p>
-                `;
-                feed.appendChild(card);
-            });
-        }
-
-        function handleRSVPSubmit(e) {
-            e.preventDefault();
-            const name = document.getElementById('inputName').value.trim();
-            const attendance = document.getElementById('inputAttendance').value;
-            const wish = document.getElementById('inputWish').value.trim();
-
-            if (!name || !wish) return;
-
-            const saved = localStorage.getItem('deni_novi_wishes_v2');
-            let wishes = saved ? JSON.parse(saved) : initialWishes;
-
-            const newWish = {
-                name: name,
-                attendance: attendance,
-                wish: wish,
-                time: "Baru saja"
-            };
-
-            wishes.unshift(newWish);
-            localStorage.setItem('deni_novi_wishes_v2', JSON.stringify(wishes));
-
-            renderWishes(wishes);
-            document.getElementById('inputWish').value = '';
-            showToast("Terima kasih! Ucapan Anda telah terkirim.", "fa-paper-plane");
-        }
-
-        function escapeHTML(str) {
-            return str.replace(/[&<>'"]/g, 
-                tag => ({
-                    '&': '&amp;',
-                    '<': '&lt;',
-                    '>': '&gt;',
-                    "'": '&#39;',
-                    '"': '&quot;'
-                }[tag] || tag)
-            );
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            loadWishes();
-        });
-    </script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
 </body>
 </html>
