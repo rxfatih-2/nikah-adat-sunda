@@ -5,19 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Undangan Pernikahan Deni & Novi</title>
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Tailwind CDN (HARUS load sebelum config) -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!--
-        ⚠️ WAJIB INLINE: tailwind.config harus diset setelah CDN load.
-        Tidak bisa dipindah ke .js external — Tailwind CDN inject config
-        langsung ke global scope saat script dieksekusi.
-    -->
+    <!-- WAJIB INLINE: tailwind.config harus diset setelah CDN load -->
     <script>
         tailwind.config = {
             theme: {
@@ -41,16 +35,15 @@
         }
     </script>
 
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Custom CSS -->
+    <!-- Path RELATIF: tanpa leading slash → GitHub Pages subpath aman -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="lock-scroll bg-cream text-ink font-sans antialiased selection:bg-rose selection:text-paper">
 
     <!-- ═══════════════════════════════════════════════════════
-         OPENING COVER — INTRO SEQUENCE
+         OPENING COVER — INTRO
          ═══════════════════════════════════════════════════════ -->
     <div id="openingCover" class="fixed inset-0 z-[9999] bg-paper texture flex items-center justify-center px-6">
 
@@ -113,7 +106,7 @@
             </button>
         </div>
 
-        <!-- Backsound: URL direct (SoundHelix, no 403) -->
+        <!-- Backsound -->
         <audio id="bgAudio" loop preload="auto" playsinline
                src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3"></audio>
 
@@ -275,11 +268,11 @@
 
                 <div class="mt-14 md:mt-16 grid md:grid-cols-2 gap-3 md:gap-4 max-w-md md:max-w-xl mx-auto">
                     <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer"
-                       class="block w-full py-3.5 text-center border border-rose/50 text-rose text-[10px] md:text-[11px] uppercase tracking-[0.3em] hover:bg-rose hover:text-paper transition-colors duration-400">
+                       class="block w-full py-3.5 text-center border border-rose/50 text-rose text-[10px] md:text-[11px] uppercase tracking-[0.3em] hover:bg-rose hover:text-paper transition-colors duration-300">
                         Lihat Lokasi
                     </a>
                     <button onclick="addToCalendar()"
-                            class="block w-full py-3.5 text-center border border-rose/50 text-rose text-[10px] md:text-[11px] uppercase tracking-[0.3em] hover:bg-rose hover:text-paper transition-colors duration-400">
+                            class="block w-full py-3.5 text-center border border-rose/50 text-rose text-[10px] md:text-[11px] uppercase tracking-[0.3em] hover:bg-rose hover:text-paper transition-colors duration-300">
                         Simpan ke Kalender
                     </button>
                 </div>
@@ -299,22 +292,22 @@
                     <div onclick="openLightbox('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=85')"
                          class="aspect-[3/4] overflow-hidden cursor-pointer">
                         <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80"
-                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                             alt="Galeri 1" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
                     </div>
                     <div onclick="openLightbox('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1600&q=85')"
                          class="aspect-[3/4] overflow-hidden cursor-pointer">
                         <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80"
-                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                             alt="Galeri 2" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
                     </div>
                     <div onclick="openLightbox('https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1600&q=85')"
                          class="aspect-[3/4] overflow-hidden cursor-pointer">
                         <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80"
-                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                             alt="Galeri 3" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
                     </div>
                     <div onclick="openLightbox('https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1600&q=85')"
                          class="aspect-[3/4] overflow-hidden cursor-pointer">
                         <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=600&q=80"
-                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                             alt="Galeri 4" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
                     </div>
                 </div>
             </div>
@@ -373,7 +366,7 @@
 
                 <div class="grid md:grid-cols-2 gap-14 md:gap-10 lg:gap-16">
 
-                    <form id="rsvpForm" onsubmit="handleRSVPSubmit(event)" class="space-y-6 md:space-y-7">
+                    <form id="rsvpForm" class="space-y-6 md:space-y-7">
                         <div>
                             <label class="block text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-muted mb-2">Nama</label>
                             <input type="text" id="inputName" required placeholder="Nama lengkap"
@@ -394,7 +387,7 @@
                                       class="w-full px-0 py-2.5 bg-transparent border-0 border-b border-line text-sm md:text-base text-ink placeholder:text-muted/50 resize-none"></textarea>
                         </div>
                         <button type="submit"
-                                class="w-full py-3.5 md:py-4 bg-rose text-paper text-[10px] md:text-[11px] uppercase tracking-[0.35em] hover:bg-rose-deep transition-colors duration-400">
+                                class="w-full py-3.5 md:py-4 bg-rose text-paper text-[10px] md:text-[11px] uppercase tracking-[0.35em] hover:bg-rose-deep transition-colors duration-300">
                             Kirim Ucapan
                         </button>
                     </form>
@@ -459,7 +452,7 @@
         </a>
     </nav>
 
-    <!-- Custom JS -->
+    <!-- Path RELATIF — tanpa leading slash -->
     <script src="script.js"></script>
 </body>
 </html>
