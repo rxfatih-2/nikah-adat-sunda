@@ -2,13 +2,11 @@
    CUSTOM STYLES — Undangan Deni & Novi
    ============================================ */
 
-/* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #FFF8F8; }
 ::-webkit-scrollbar-thumb { background: #F0DDE1; border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: #B85C6E; }
 
-/* Lock scroll saat cover tampil */
 .lock-scroll {
     overflow: hidden !important;
     height: 100vh !important;
@@ -17,7 +15,6 @@
     touch-action: none !important;
 }
 
-/* Prevent horizontal overflow */
 html, body {
     overflow-x: hidden;
 }
@@ -86,7 +83,7 @@ html, body {
 }
 
 /* ============================================
-   FORM FOCUS STATE
+   FORM FOCUS
    ============================================ */
 
 input:focus,
@@ -97,7 +94,7 @@ textarea:focus {
 }
 
 /* ============================================
-   REDUCED MOTION — aksesibilitas
+   REDUCED MOTION
    ============================================ */
 
 @media (prefers-reduced-motion: reduce) {
